@@ -13,6 +13,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
     "next": "15.1.0",
+    "next-sitemap": "^4.2.3",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.5",
