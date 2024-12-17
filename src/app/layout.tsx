@@ -1,21 +1,24 @@
 import "@/app/globals.css";
 
 import type { Metadata } from "next";
+import { cookies } from 'next/headers'
 import { Noto_Sans_Armenian, Noto_Sans } from "next/font/google";
 
 import { T_Children } from "@/app/types";
+import Navbar from "@/app/ui/Navbar";
+import Hero from "@/app/ui/Hero";
 
 const noto_ru = Noto_Sans({
   subsets: ["cyrillic", "latin"],
   preload: true,
-  variable: "--font",
+  variable: "--font-ru",
   weight: ["400", "500", "600", "700", "800", "900"]
 });
 
 const noto_am = Noto_Sans_Armenian({
   subsets: ["armenian", "latin"],
   preload: true,
-  variable: "--font",
+  variable: "--font-am",
   weight: ["400", "500", "600", "700", "800", "900"]
 });
 
@@ -67,21 +70,24 @@ export const metadata: Metadata = {
   },
 };
 
-type Props = T_Children & {
-  params: { lang: string }
-};
+type Props = T_Children;
 
-export default async function RootLayout({ children, params }: Props) {
-  let { lang } = await params;
-  lang = lang === "ru" ? "ru" : "hy";
-  const font = lang === "ru" ?  noto_ru : noto_am;
+export default async function RootLayout({ children }: Props) {
+  const lang= (await cookies()).get("lang")?.value || "am";
+
+  const font = lang === "ru" ? noto_ru : noto_am;
+  const html_lang = lang === "ru" ? "ru" : "hy";
 
   return (
-    <html lang={lang}>
+    <html lang={html_lang}>
       <body
         className={`${font.variable} antialiased`}
       >
-        {children}
+        <Hero lang={lang} />
+        <Navbar />
+        <main className="p-2">
+          {children}
+        </main>
       </body>
     </html>
   );

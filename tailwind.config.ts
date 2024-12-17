@@ -9,6 +9,10 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
+        saffron: "#efbf38",
+        oxford_blue: "#002347",
+        amazon: "#34685c",
+        dark_orange: "#ff8e00",
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
