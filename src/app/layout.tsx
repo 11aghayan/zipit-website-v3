@@ -73,7 +73,7 @@ export const metadata: Metadata = {
 type Props = T_Children;
 
 export default async function RootLayout({ children }: Props) {
-  const lang= (await cookies()).get("lang")?.value || "am";
+  const lang = (await cookies()).get("lang")?.value || "am";
 
   const font = lang === "ru" ? noto_ru : noto_am;
   const html_lang = lang === "ru" ? "ru" : "hy";

@@ -10,7 +10,7 @@ type Props = {
 export default function Hero({ lang }: Props) {
 
   return (
-    <div className="w-full max-w-[250px] md:max-w-[350px] mx-auto py-2">
+    <div className="w-full max-w-[200px] md:max-w-[350px] mx-auto py-2">
       <Link 
         href={`/${lang}`}
       >
