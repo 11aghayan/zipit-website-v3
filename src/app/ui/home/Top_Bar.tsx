@@ -3,7 +3,6 @@ import { Separator } from "@/components/ui/separator";
 
 import Search from "./Search";
 
-
 export default function Top_Bar() {
   
   return (

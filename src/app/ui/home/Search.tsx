@@ -1,10 +1,12 @@
 "use client";
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 import { Input } from "@/components/ui/input";
+import use_content from "@/hooks/use-content";
+import { T_Content, T_Lang } from "@/app/types";
 
 type Props = {
   className?: string;
@@ -14,6 +16,17 @@ export default function Search({ className }: Props) {
   const router = useRouter();
   const search_params = new URLSearchParams(useSearchParams().toString());
   const pathname = usePathname();
+  let lang = pathname.slice(1, 3) as T_Lang;
+  lang = (lang === "ru" ? "ru" : "am");
+  
+  const [content, set_content] = useState<T_Content>();
+  
+  useEffect(() => {
+    (async function() {
+      const cont = await use_content(lang);
+      set_content(cont);
+    })()
+  }, [lang]);
   
   let timeout_id: NodeJS.Timeout;
 
@@ -37,7 +50,8 @@ export default function Search({ className }: Props) {
         />
         <Input 
           type="text"
-          placeholder="Search"
+          aria-label={content?.app.ui.home.Search["aria-label"]}
+          placeholder={content?.app.ui.home.Search.placeholder}
           defaultValue={search_params.get("search") ?? ""}
           className="bg-white pr-8 text-sm"
           onChange={(e) => {
