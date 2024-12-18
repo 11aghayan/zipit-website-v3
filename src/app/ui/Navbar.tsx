@@ -2,20 +2,31 @@
 
 import Link from "next/link";
 import { Icon } from "@iconify/react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { nav_routes } from "@/lib/nav-routes";
-import { usePathname, useSearchParams } from "next/navigation";
+import { T_Content, T_Lang } from "@/app/types";
+import use_content from "@/hooks/use-content";
 
 
 export default function Navbar() {
+  const [content, set_content] = useState<T_Content>();
+  
   const search_params = useSearchParams().toString();
   const pathname_array = usePathname().split("/");
-  const lang = pathname_array[1];
+  const lang = pathname_array[1] as T_Lang;
   const next_lang = lang === "am" ? "ru" : "am";
   pathname_array[1] = next_lang;
   const pathname = pathname_array.join("/");
   
+  useEffect(() => {
+    (async function() {
+      const c = await use_content(lang);
+      set_content(c);
+    })()
+  }, [lang]);
 
   return (
     <NavigationMenu className="w-full max-w-full min-h-[34px] md:min-h-16 bg-black p-2 md:p-5">
@@ -25,14 +36,22 @@ export default function Navbar() {
             <NavigationMenuItem
               key={href}
             >
-              <Link href={href}>
+              <Link 
+                href={href} 
+                title={content?.app.ui.Navbar.title[href as keyof T_Content["app"]["ui"]["Navbar"]["title"] ]}
+                aria-label={content?.app.ui.Navbar.title[href as keyof T_Content["app"]["ui"]["Navbar"]["title"] ] ?? href}
+              >
                 <Icon icon={icon} className="text-white hover:text-saffron text-lg md:text-2xl" />
               </Link>
             </NavigationMenuItem>
           ))
         }
         <NavigationMenuItem>
-          <Link href={`${pathname}?${search_params}`}>
+          <Link 
+            href={`${pathname}?${search_params}`}
+            title={content?.app.ui.Navbar.title.lang_switch}
+            aria-label={content?.app.ui.Navbar.title.lang_switch ?? "Switch language"}
+          >
             {
               lang === "am"
               ?
