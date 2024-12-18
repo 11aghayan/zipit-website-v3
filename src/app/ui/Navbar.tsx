@@ -9,6 +9,7 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/compon
 import { nav_routes } from "@/lib/nav-routes";
 import { T_Content, T_Lang } from "@/app/types";
 import use_content from "@/hooks/use-content";
+import clsx from "clsx";
 
 
 export default function Navbar() {
@@ -37,11 +38,14 @@ export default function Navbar() {
               key={href}
             >
               <Link 
-                href={href} 
+                href={lang + href} 
                 title={content?.app.ui.Navbar.title[href as keyof T_Content["app"]["ui"]["Navbar"]["title"] ]}
                 aria-label={content?.app.ui.Navbar.title[href as keyof T_Content["app"]["ui"]["Navbar"]["title"] ] ?? href}
               >
-                <Icon icon={icon} className="text-white hover:text-saffron text-lg md:text-2xl" />
+                <Icon icon={icon} className={clsx(
+                  "hover:text-saffron text-lg md:text-2xl",
+                    href === `/${pathname_array[2]}` ? "text-saffron" : "text-white "
+                  )} />
               </Link>
             </NavigationMenuItem>
           ))
