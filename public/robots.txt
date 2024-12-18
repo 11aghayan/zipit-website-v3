@@ -1,12 +1,9 @@
-# Allow all crawlers to access your site
+# *
 User-agent: *
+Allow: /
 
-# Allow indexing of all important pages
-Disallow:
+# Host
+Host: https://zipit.am
 
-# Block unnecessary paths
-Disallow: /_next/
-Disallow: /static/
-
-# Allow crawlers access to the sitemap
+# Sitemaps
 Sitemap: https://zipit.am/sitemap.xml
