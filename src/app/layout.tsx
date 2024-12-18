@@ -85,7 +85,7 @@ export default async function RootLayout({ children }: Props) {
       >
         <Hero lang={lang} />
         <Navbar />
-        <main className="p-2">
+        <main>
           {children}
         </main>
       </body>
