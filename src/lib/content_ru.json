@@ -24,10 +24,10 @@
         "Sorting_Section": {
           "header": "Сортировать по",
           "sorting": {
-            "name_asc": "имени А - Я",
-            "name_desc": "имени Я - А",
-            "price_asc": "возрастанию цены",
-            "price_desc": "убыванию цены"
+            "name_asc": "Имени А - Я",
+            "name_desc": "Имени Я - А",
+            "price_asc": "Возрастанию цены",
+            "price_desc": "Убыванию цены"
           }
         }
       },
