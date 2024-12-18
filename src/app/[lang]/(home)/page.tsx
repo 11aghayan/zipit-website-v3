@@ -5,11 +5,11 @@ import Filters_Menu from "@/app/ui/home/Filters_Menu";
 
 export default async function Home() {
   return (
-    <SidebarProvider defaultOpen={false}>
-      <Filters_Menu />
       <div className="w-full">
-        <Top_Bar />
+        <SidebarProvider defaultOpen={false}>
+          <Filters_Menu />
+          <Top_Bar />
+        </SidebarProvider>
       </div>
-    </SidebarProvider>
   );
 }

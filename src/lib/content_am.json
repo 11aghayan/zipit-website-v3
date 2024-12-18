@@ -5,6 +5,30 @@
         "Search": {
           "placeholder": "Որոնել",
           "aria-label": "Ապրանքների որոնման մուտքագրման դաշտ"
+        },
+        "Categories_Section": {
+          "header": "Կատեգորիաներ",
+          "no_categories": "Կատեգորիաներ չկան"
+        },
+        "Special_Groups_Section": {
+          "header": "Հատուկ առաջարկ",
+          "groups": {
+            "liq": "Լիկվիդացիա",
+            "new": "Նոր",
+            "prm": "Ակցիա"
+          }
+        },
+        "Count_Section": {
+          "header": "Ապրանքների քանակը մեկ էջում"
+        },
+        "Sorting_Section": {
+          "header": "Դասավորել ըստ",
+          "sorting": {
+            "name_asc": "Անվան Ա - Ֆ",
+            "name_desc": "Անվան Ֆ - Ա",
+            "price_asc": "Գնի աճման",
+            "price_desc": "Գնի նվազման"
+          }
         }
       },
       "Navbar": {

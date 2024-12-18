@@ -5,6 +5,30 @@
         "Search": {
           "placeholder": "Поиск",
           "aria-label": "Поле ввода поиска товаров"
+        },
+        "Categories_Section": {
+          "header": "Категории",
+          "no_categories": "Нет категорий"
+        },
+        "Special_Groups_Section": {
+          "header": "Специальное предложение",
+          "groups": {
+            "liq": "Ликвидация",
+            "new": "Новый",
+            "prm": "Акция"
+          }
+        },
+        "Count_Section": {
+          "header": "Количество товаров на странице"
+        },
+        "Sorting_Section": {
+          "header": "Сортировать по",
+          "sorting": {
+            "name_asc": "имени А - Я",
+            "name_desc": "имени Я - А",
+            "price_asc": "возрастанию цены",
+            "price_desc": "убыванию цены"
+          }
         }
       },
       "Navbar": {
