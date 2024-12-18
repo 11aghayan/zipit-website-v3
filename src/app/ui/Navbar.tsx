@@ -4,12 +4,12 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { nav_routes } from "@/lib/nav-routes";
 import { T_Content, T_Lang } from "@/app/types";
 import use_content from "@/hooks/use-content";
-import clsx from "clsx";
 
 
 export default function Navbar() {
@@ -23,10 +23,8 @@ export default function Navbar() {
   const pathname = pathname_array.join("/");
   
   useEffect(() => {
-    (async function() {
-      const c = await use_content(lang);
-      set_content(c);
-    })()
+      use_content(lang)
+        .then(c => set_content(c));
   }, [lang]);
 
   return (
@@ -55,6 +53,9 @@ export default function Navbar() {
             href={`${pathname}?${search_params}`}
             title={content?.app.ui.Navbar.title.lang_switch}
             aria-label={content?.app.ui.Navbar.title.lang_switch ?? "Switch language"}
+            onClick={() => {
+              document.documentElement.lang = next_lang === "ru" ? "ru" : "hy"
+            }}
           >
             {
               lang === "am"

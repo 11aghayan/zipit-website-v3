@@ -22,10 +22,8 @@ function Special_Groups_Section({ header_styles }: Props) {
   const [special_groups, set_special_groups] = useState<("liq" | "prm" | "new")[]>(search_params.get("special_groups")?.split(",") as ("liq" | "prm" | "new")[] | undefined || []);
   
   useEffect(() => {
-    (async function() {
-      const c = await use_content(lang);
-      set_content(c);
-    })();
+    use_content(lang)
+      .then(c => set_content(c));
   }, [lang]);
   
   useEffect(() => {

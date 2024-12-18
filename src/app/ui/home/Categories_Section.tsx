@@ -37,11 +37,12 @@ function Categories_Section({ header_styles }: Props) {
   
   useEffect(() => {
     fetch_categories();
-    (async function() {
-      const c = await use_content(lang);
-      set_content(c);
-    })()
-  }, [])
+  }, []);
+  
+  useEffect(() => {
+    use_content(lang)
+      .then(c => set_content(c));
+  }, [lang]);
   
   useEffect(() => {
     search_params.set("categories", selected_categories.join(","));

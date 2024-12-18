@@ -22,10 +22,8 @@ export default function Search({ className }: Props) {
   const [content, set_content] = useState<T_Content>();
   
   useEffect(() => {
-    (async function() {
-      const cont = await use_content(lang);
-      set_content(cont);
-    })()
+    use_content(lang)
+      .then(c => set_content(c));
   }, [lang]);
   
   let timeout_id: NodeJS.Timeout;

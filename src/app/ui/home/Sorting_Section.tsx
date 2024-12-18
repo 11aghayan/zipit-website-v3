@@ -26,7 +26,7 @@ function Sorting_Section({ header_styles }: Props) {
   useEffect(() => {
     use_content(lang)
       .then(c => set_content(c));
-  }, []);
+  }, [lang]);
   
   useEffect(() => {
     search_params.set("sortby", sorting);

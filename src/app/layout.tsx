@@ -33,9 +33,9 @@ export const metadata: Metadata = {
       "ZIPIT-ում կարող եք գտնել պայուսակների բարձրորակ աքսեսուարներ՝ փականներ, դեկորներ և այլն։ Найдите высококачественные аксессуары для сумок в ZIPIT: молнии, ремни и декоративные элементы.",
     images: [
       {
-        url: "https://zipit.am/images/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "https://zipit.am/images/og-image.png",
+        width: 705,
+        height: 640,
         alt: "ZIPIT - Գեղեցիկ պայուսակների աքսեսուարներ | Стильные аксессуары для сумок",
       },
     ],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "ZIPIT | Պայուսակների ոճային աքսեսուարներ | Стильные аксессуары для сумок ",
     description:
       "Ավելացրեք Ձեր պայուսակներին ոճ և ֆունկցիոնալություն ZIPIT-ի աքսեսուարներով։ Добавьте стиль и функциональность вашим сумкам с аксессуарами ZIPIT.",
-    images: ["https://zipit.am/images/og-image.jpg"],
+    images: ["https://zipit.am/images/og-image.png"],
   },
   keywords: [
     "պայուսակի աքսեսուարներ",
@@ -83,7 +83,7 @@ export default async function RootLayout({ children }: Props) {
       <body
         className={`${font.variable} antialiased`}
       >
-        <Hero lang={lang} />
+        <Hero />
         <Navbar />
         <main>
           {children}
