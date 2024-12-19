@@ -8,6 +8,7 @@ export async function get_all_categories(lang: T_Lang) {
     const response = await fetch_api<T_All_Categories_Response>(`/categories/public?lang=${lang}`);
     return response;
   } catch (error) {
+    console.debug(error);
     return new Response_Error(500, { message: "Something went wring" });
   }
 }
