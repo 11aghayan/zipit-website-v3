@@ -9,6 +9,9 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
+        group_new: "#3B82F6",
+        group_prm: "#efbf38",
+        group_liq: "#EF4444",
   			saffron: '#efbf38',
   			oxford_blue: '#002347',
   			amazon: '#34685c',

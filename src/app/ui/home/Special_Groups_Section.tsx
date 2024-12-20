@@ -9,6 +9,7 @@ import { T_Content, T_Lang } from "@/app/types";
 import use_content from "@/hooks/use-content";
 
 import { T_Section_Props } from "./Filters_Menu";
+import clsx from "clsx";
 
 type Props = T_Section_Props;
 
@@ -37,11 +38,16 @@ function Special_Groups_Section({ header_styles }: Props) {
       <SidebarGroupLabel className={header_styles}>{content?.app.ui.home.Special_Groups_Section.header}</SidebarGroupLabel>
       <SidebarGroupContent className="flex flex-col gap-2">
         {
-          (["liq", "prm", "new"] as typeof special_groups).map((group) => (
+          special_group_list.map((group) => (
             <Toggle
               key={group}
               variant="outline"
-              className="data-[state=on]:bg-saffron"
+              className={clsx({
+                "data-[state=on]:bg-group_liq data-[state=on]:text-white": group === "liq",
+                "data-[state=on]:bg-group_prm data-[state=on]:text-white": group === "prm",
+                "data-[state=on]:bg-group_new data-[state=on]:text-white": group === "new"
+              })
+              }
               pressed={special_groups.includes(group)}
               onClick={() => {
                 set_special_groups(prev => {
@@ -69,3 +75,5 @@ export default function Wrapper({ header_styles }: Props) {
     </Suspense>
   );
 }
+
+const special_group_list = ["liq", "prm", "new"] as const;
