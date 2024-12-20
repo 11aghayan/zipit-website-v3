@@ -29,6 +29,10 @@
             "price_asc": "Գնի աճման",
             "price_desc": "Գնի նվազման"
           }
+        },
+        "Pagination": {
+          "previous_text": "Նախորդ",
+          "next_text": "Հաջորդ"
         }
       },
       "Navbar": {
@@ -44,5 +48,8 @@
         "title": "Վերադառնալ գլխավոր էջ"
       }
     }
+  },
+  "actions": {
+    "something_went_wrong_error": "Ինչ-որ բան սխալ է գնացել"
   }
 }
