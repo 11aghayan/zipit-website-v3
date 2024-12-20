@@ -4,8 +4,8 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation"; 
 import { useState, useEffect, Suspense } from "react";
 
-import { get_all_categories } from "@/app/actions/category-actions";
-import { Response_Error, Response_Success } from "@/app/actions/lib";
+import { get_all_categories } from "@/actions/category-actions";
+import { Response_Error, Response_Success } from "@/actions/lib";
 import { SidebarContent, SidebarGroup, SidebarGroupLabel } from "@/components/ui/sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
 import use_content from "@/hooks/use-content";
