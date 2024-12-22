@@ -1,48 +1,70 @@
 {
-  "app": {
-    "ui": {
-      "home": {
-        "Search": {
-          "placeholder": "Поиск",
-          "aria-label": "Поле ввода поиска товаров"
-        },
-        "Categories_Section": {
-          "header": "Категории",
-          "no_categories": "Нет категорий"
-        },
-        "Special_Groups_Section": {
-          "header": "Специальное предложение",
-          "groups": {
-            "liq": "Ликвидация",
-            "new": "Новый",
-            "prm": "Акция"
-          }
-        },
-        "Count_Section": {
-          "header": "Количество товаров на странице"
-        },
-        "Sorting_Section": {
-          "header": "Сортировать по",
-          "sorting": {
-            "name_asc": "Имени А - Я",
-            "name_desc": "Имени Я - А",
-            "price_asc": "Возрастанию цены",
-            "price_desc": "Убыванию цены"
-          }
+  "components": {
+    "home": {
+      "Search": {
+        "placeholder": "Поиск",
+        "aria-label": "Поле ввода поиска товаров"
+      },
+      "Categories_Section": {
+        "header": "Категории",
+        "no_categories": "Нет категорий"
+      },
+      "Special_Groups_Section": {
+        "header": "Специальное предложение",
+        "groups": {
+          "liq": "Ликвидация",
+          "new": "Новый",
+          "prm": "Акция"
         }
       },
-      "Navbar": {
-        "title": {
-          "/contacts": "Контакты",
-          "/address": "Адрес",
-          "/cart": "Корзина",
-          "lang_switch": "Լեզուն փոխել հայերենի"
+      "Count_Section": {
+        "header": "Количество товаров на странице"
+      },
+      "Sorting_Section": {
+        "header": "Сортировать по",
+        "sorting": {
+          "name_asc": "Имени А - Я",
+          "name_desc": "Имени Я - А",
+          "price_asc": "Возрастанию цены",
+          "price_desc": "Убыванию цены"
         }
       },
-      "Hero": {
-        "aria-label": "Логотип Zipit, вернуться на главную страницу",
-        "title": "Вернуться на главную страницу"
+      "Pagination": {
+        "previous_text": "Пред.",
+        "next_text": "След."
+      },
+      "Item_List": {
+        "no_items": "Товаров не найдено"
+      },
+      "Item_Card": {
+        "aria-label": "Перейти на страницу продукта {{item_name}}"
+      },
+      "Suggested_Items": {
+        "header": "Горячие предложения"
       }
+    },
+    "Navbar": {
+      "title": {
+        "/contacts": "Контакты",
+        "/address": "Адрес",
+        "/cart": "Корзина",
+        "lang_switch": "Լեզուն փոխել հայերենի"
+      }
+    },
+    "Hero": {
+      "aria-label": "Логотип Zipit, вернуться на главную страницу",
+      "title": "Вернуться на главную страницу"
+    },
+    "add_to_cart_btn": {
+      "add_to_cart": "Добавить в корзину",
+      "remove_from_cart": "Удалить из корзины",
+      "update_cart": "Обновить корзину"
     }
+  },
+  "actions": {
+    "something_went_wrong_error": "Что-то пошло не так"
+  },
+  "common": {
+    "currency": "драм"
   }
 }

@@ -5,7 +5,7 @@ import { Suspense, useEffect, useState } from "react";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { SidebarContent, SidebarGroup, SidebarGroupLabel } from "@/components/ui/sidebar";
-import { T_Content, T_Lang } from "@/app/types";
+import { T_Content, T_Lang } from "@/types";
 import use_content from "@/hooks/use-content";
 
 import { T_Section_Props } from "./Filters_Menu";
@@ -34,7 +34,7 @@ function Count_Section({ header_styles }: Props) {
     
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className={header_styles}>{content?.app.ui.home.Count_Section.header ?? ""}</SidebarGroupLabel>
+      <SidebarGroupLabel className={header_styles}>{content?.components.home.Count_Section.header ?? ""}</SidebarGroupLabel>
       <SidebarContent>
         <Select onValueChange={(val) => set_count(val)}>
           <SelectTrigger>

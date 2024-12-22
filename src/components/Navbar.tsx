@@ -8,7 +8,7 @@ import clsx from "clsx";
 
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { nav_routes } from "@/lib/nav-routes";
-import { T_Content, T_Lang } from "@/app/types";
+import { T_Content, T_Lang } from "@/types";
 import use_content from "@/hooks/use-content";
 
 
@@ -28,7 +28,7 @@ export default function Navbar() {
   }, [lang]);
 
   return (
-    <NavigationMenu className="w-full max-w-full min-h-[34px] md:min-h-16 bg-black p-2 md:p-5">
+    <NavigationMenu className="w-full max-w-full min-h-[44px] md:min-h-16 bg-black p-2 md:p-5">
       <NavigationMenuList className="space-x-5">
         {
           nav_routes.map(({ icon, href }) => (
@@ -37,8 +37,9 @@ export default function Navbar() {
             >
               <Link 
                 href={lang + href} 
-                title={content?.app.ui.Navbar.title[href as keyof T_Content["app"]["ui"]["Navbar"]["title"] ]}
-                aria-label={content?.app.ui.Navbar.title[href as keyof T_Content["app"]["ui"]["Navbar"]["title"] ] ?? href}
+                title={content?.components.Navbar.title[href as keyof T_Content["components"]["Navbar"]["title"] ]}
+                aria-label={content?.components.Navbar.title[href as keyof T_Content["components"]["Navbar"]["title"] ] ?? href}
+                className="relative"
               >
                 <Icon icon={icon} className={clsx(
                   "hover:text-saffron text-lg md:text-2xl",
@@ -51,8 +52,8 @@ export default function Navbar() {
         <NavigationMenuItem>
           <Link 
             href={`${pathname}?${search_params}`}
-            title={content?.app.ui.Navbar.title.lang_switch}
-            aria-label={content?.app.ui.Navbar.title.lang_switch ?? "Switch language"}
+            title={content?.components.Navbar.title.lang_switch}
+            aria-label={content?.components.Navbar.title.lang_switch ?? "Switch language"}
             onClick={() => {
               document.documentElement.lang = next_lang === "ru" ? "ru" : "hy"
             }}

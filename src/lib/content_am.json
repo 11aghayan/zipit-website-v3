@@ -1,48 +1,70 @@
 {
-  "app": {
-    "ui": {
-      "home": {
-        "Search": {
-          "placeholder": "Որոնել",
-          "aria-label": "Ապրանքների որոնման մուտքագրման դաշտ"
-        },
-        "Categories_Section": {
-          "header": "Կատեգորիաներ",
-          "no_categories": "Կատեգորիաներ չկան"
-        },
-        "Special_Groups_Section": {
-          "header": "Հատուկ առաջարկ",
-          "groups": {
-            "liq": "Լիկվիդացիա",
-            "new": "Նոր",
-            "prm": "Ակցիա"
-          }
-        },
-        "Count_Section": {
-          "header": "Ապրանքների քանակը մեկ էջում"
-        },
-        "Sorting_Section": {
-          "header": "Դասավորել ըստ",
-          "sorting": {
-            "name_asc": "Անվան Ա - Ֆ",
-            "name_desc": "Անվան Ֆ - Ա",
-            "price_asc": "Գնի աճման",
-            "price_desc": "Գնի նվազման"
-          }
+  "components": {
+    "home": {
+      "Search": {
+        "placeholder": "Որոնել",
+        "aria-label": "Ապրանքների որոնման մուտքագրման դաշտ"
+      },
+      "Categories_Section": {
+        "header": "Կատեգորիաներ",
+        "no_categories": "Կատեգորիաներ չկան"
+      },
+      "Special_Groups_Section": {
+        "header": "Հատուկ առաջարկ",
+        "groups": {
+          "liq": "Լիկվիդացիա",
+          "new": "Նոր",
+          "prm": "Ակցիա"
         }
       },
-      "Navbar": {
-        "title": {
-          "/contacts": "Կոնտակտներ",
-          "/address": "Հասցե",
-          "/cart": "Զամբյուղ",
-          "lang_switch": "Переключить язык на русский"
+      "Count_Section": {
+        "header": "Ապրանքների քանակը մեկ էջում"
+      },
+      "Sorting_Section": {
+        "header": "Դասավորել ըստ",
+        "sorting": {
+          "name_asc": "Անվան Ա - Ֆ",
+          "name_desc": "Անվան Ֆ - Ա",
+          "price_asc": "Գնի աճման",
+          "price_desc": "Գնի նվազման"
         }
       },
-      "Hero": {
-        "aria-label": "Zipit-ի լոգոն, վերադառնում է գլխավոր էջ",
-        "title": "Վերադառնալ գլխավոր էջ"
+      "Pagination": {
+        "previous_text": "Նախորդ",
+        "next_text": "Հաջորդ"
+      },
+      "Item_List": {
+        "no_items": "Ապրանքներ չեն գտնվել"
+      },
+      "Item_Card": {
+        "aria-label": "Գնալ {{item_name}} ապրանքի էջ"
+      },
+      "Suggested_Items": {
+        "header": "Թեժ առաջարկներ"
       }
+    },
+    "Navbar": {
+      "title": {
+        "/contacts": "Կոնտակտներ",
+        "/address": "Հասցե",
+        "/cart": "Զամբյուղ",
+        "lang_switch": "Переключить язык на русский"
+      }
+    },
+    "Hero": {
+      "aria-label": "Zipit-ի լոգոն, վերադառնում է գլխավոր էջ",
+      "title": "Վերադառնալ գլխավոր էջ"
+    },
+    "add_to_cart_btn": {
+      "add_to_cart": "Ավելացնել զամբյուղ",
+      "remove_from_cart": "Հեռացնել զամբյուղից",
+      "update_cart": "Թարմացնել զամբյուղը"
     }
+  },
+  "actions": {
+    "something_went_wrong_error": "Ինչ-որ բան սխալ է գնացել"
+  },
+  "common": {
+    "currency": "դրամ"
   }
 }

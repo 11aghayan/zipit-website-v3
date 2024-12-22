@@ -10,7 +10,7 @@ export async function fetch_api<T>(url: string, ...otherParams: RequestInit[]): 
   const data = await res.json();
   
   if (!is_status_success(res.status)) {
-    return new Response_Error(res.status, data);
+    return new Response_Error(res.status, data, data.message);
   }
 
   return new Response_Success<T>(res.status, data);
@@ -20,9 +20,9 @@ export class Response_Error {
   status: number;
   data: { message: string };
 
-  constructor(status: number, data: { message: string }) {
+  constructor(status: number, data: { message: string }, error: unknown) {
     const date = new Date(Date.now()).toUTCString();
-    console.debug(`${date}: ${data.message}`);
+    console.debug(`${date}: ${error}`);
     this.status = status;
     this.data = data;
   }

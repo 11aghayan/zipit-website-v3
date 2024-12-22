@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 import { cookies } from 'next/headers'
 import { Noto_Sans_Armenian, Noto_Sans } from "next/font/google";
 
-import { T_Children } from "@/app/types";
-import Navbar from "@/app/ui/Navbar";
-import Hero from "@/app/ui/Hero";
+import { T_Children } from "@/types";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
 
 const noto_ru = Noto_Sans({
   subsets: ["cyrillic", "latin"],
