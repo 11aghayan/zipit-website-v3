@@ -75,7 +75,11 @@ export type T_Content = {
     something_went_wrong_error: "Ինչ-որ բան սխալ է գնացել"
   },
   common: {
-    "currency": string
+    "currency": string,
+    "cookie-notification": {
+      "main_text": string,
+      "button_text": string
+    }
   }
 }
 
