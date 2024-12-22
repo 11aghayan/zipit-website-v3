@@ -9,7 +9,7 @@ export default function Top_Bar() {
     <section className="w-full">
       <div className="w-full py-1 px-3 md:py-2 flex gap-10 items-center justify-between">
         <SidebarTrigger />
-        <Search className="flex-1 flex flex-shrink-0 justify-end sm:justify-center" />
+        <Search />
       </div>
       <Separator />
     </section>
