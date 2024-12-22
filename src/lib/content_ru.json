@@ -33,6 +33,12 @@
         "Pagination": {
           "previous_text": "Пред.",
           "next_text": "След."
+        },
+        "Item_List": {
+          "no_items": "Товаров не найдено"
+        },
+        "Item_Card": {
+          "aria-label": "Перейти на страницу продукта {{item_name}}"
         }
       },
       "Navbar": {
@@ -46,10 +52,18 @@
       "Hero": {
         "aria-label": "Логотип Zipit, вернуться на главную страницу",
         "title": "Вернуться на главную страницу"
+      },
+      "add_to_cart_btn": {
+        "add_to_cart": "Добавить в корзину",
+        "remove_from_cart": "Удалить из корзины",
+        "update_cart": "Обновить корзину"
       }
     }
   },
   "actions": {
     "something_went_wrong_error": "Что-то пошло не так"
+  },
+  "common": {
+    "currency": "драм"
   }
 }

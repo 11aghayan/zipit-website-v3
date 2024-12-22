@@ -33,6 +33,12 @@
         "Pagination": {
           "previous_text": "Նախորդ",
           "next_text": "Հաջորդ"
+        },
+        "Item_List": {
+          "no_items": "Ապրանքներ չեն գտնվել"
+        },
+        "Item_Card": {
+          "aria-label": "Գնալ {{item_name}} ապրանքի էջ"
         }
       },
       "Navbar": {
@@ -46,10 +52,18 @@
       "Hero": {
         "aria-label": "Zipit-ի լոգոն, վերադառնում է գլխավոր էջ",
         "title": "Վերադառնալ գլխավոր էջ"
+      },
+      "add_to_cart_btn": {
+        "add_to_cart": "Ավելացնել զամբյուղ",
+        "remove_from_cart": "Հեռացնել զամբյուղից",
+        "update_cart": "Թարմացնել զամբյուղը"
       }
     }
   },
   "actions": {
     "something_went_wrong_error": "Ինչ-որ բան սխալ է գնացել"
+  },
+  "common": {
+    "currency": "դրամ"
   }
 }

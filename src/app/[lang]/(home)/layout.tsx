@@ -7,7 +7,7 @@ type Props = T_Children;
 export default function Home_Layout({ children }: Props) {
   
   return (
-    <SidebarProvider defaultOpen={false}>
+    <SidebarProvider defaultOpen={true}>
       <Filters_Menu />
       {children}
     </SidebarProvider>

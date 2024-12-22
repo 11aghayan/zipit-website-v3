@@ -267,18 +267,19 @@ const SidebarTrigger = React.forwardRef<
 
   return (
     <Button
+      aria-label="Open filters menu"
       ref={ref}
       data-sidebar="trigger"
       variant="ghost"
       size="icon"
-      className={cn("h-7 w-7", className)}
+      className={cn("h-7 w-7 [&_svg]:size-max", className)}
       onClick={(event) => {
         onClick?.(event)
         toggleSidebar()
       }}
       {...props}
     >
-      <Icon icon="mingcute:filter-fill" />
+      <Icon icon="iconamoon:menu-burger-horizontal-bold" fontSize={20} />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )

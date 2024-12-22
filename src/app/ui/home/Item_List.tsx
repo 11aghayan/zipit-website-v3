@@ -3,12 +3,14 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
-import { T_All_Items_Response, T_Lang } from "@/app/types";
+import { T_All_Items_Response, T_Content, T_Lang } from "@/app/types";
 import { get_all_items } from "@/actions/item-actions";
 import { Response_Error, Response_Success } from "@/actions/lib";
+import use_content from "@/hooks/use-content";
 
 import Item_Card from "./Item_Card";
 import Pagination from "./Pagination";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type Props = {
   lang: T_Lang;
@@ -20,6 +22,13 @@ export default function Item_List({ lang }: Props) {
   
   const [is_loading, set_is_loading] = useState(true);
   const [data, set_data] = useState<Response_Error | Response_Success<T_All_Items_Response>>();
+  const [content, set_content] = useState<T_Content>();
+
+  useEffect(() => {
+    use_content(lang)
+      .then(c => set_content(c));
+  }, [lang]);
+  
   useEffect(() => {
     fetch_items();
   }, [search_params]);
@@ -41,7 +50,16 @@ export default function Item_List({ lang }: Props) {
   
   if (!data || is_loading) {
     return (
-      <p>Loading...</p>
+      <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
+        {
+          new Array(Number(search_params.get("count") ?? "25")).fill(1).map((val, i) => (
+            <Skeleton 
+              key={val + i}
+              className="h-[470px]"
+            />
+          ))
+        }
+      </div>
     );
   }
   
@@ -59,13 +77,21 @@ export default function Item_List({ lang }: Props) {
         {
           data.data.items_count > 0
           ?
-          data.data.items.map((item) => (
-            <Item_Card 
-              key={item.id}
-            />
-          ))
+          <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
+          {
+            data.data.items.map((item) => (
+              <Item_Card 
+                key={item.photo_id}
+                item={item}
+                lang={lang}
+              />
+            ))
+          }
+          </div>
           :
-          <p className="text-2xl mt-3 opacity-25 font-semibold text-center">Ապրանքներ չեն գտնվել</p>
+          <p className="text-2xl mt-3 opacity-25 font-semibold text-center">
+            {content?.app.ui.home.Item_List.no_items ?? ""}
+          </p>
         }
       </div>
       <Pagination 

@@ -19,17 +19,18 @@ export default function Hero() {
   }, [lang]);
   
   return (
-    <div className="w-full max-w-[200px] md:max-w-[350px] mx-auto py-2">
+    <div className="w-full relative py-2">
       <Link 
         href={`/${lang}`}
         title={content?.app.ui.Hero.title ?? ""}
         aria-label={content?.app.ui.Hero["aria-label"] ?? "Zipit logo, go back to main page"}
       >
-        <div className="relative mx-auto w-full aspect-[5.0917]">
+        <div className="relative w-full max-w-[200px] md:max-w-[350px] mx-auto aspect-[5.0917]">
           <Image 
             src={hero_img}
             alt="zipit logo hero image"
             fill
+            loading="lazy"
           />
         </div>
       </Link>
