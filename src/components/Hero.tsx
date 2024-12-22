@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 import hero_img from "@/../../public/images/hero-image.webp";
 import use_content from "@/hooks/use-content";
-import { T_Content, T_Lang } from "@/app/types";
+import { T_Content, T_Lang } from "@/types";
 
 export default function Hero() {
   const lang = usePathname().slice(1, 3);
@@ -22,8 +22,8 @@ export default function Hero() {
     <div className="w-full relative py-2">
       <Link 
         href={`/${lang}`}
-        title={content?.app.ui.Hero.title ?? ""}
-        aria-label={content?.app.ui.Hero["aria-label"] ?? "Zipit logo, go back to main page"}
+        title={content?.components.Hero.title ?? ""}
+        aria-label={content?.components.Hero["aria-label"] ?? "Zipit logo, go back to main page"}
       >
         <div className="relative w-full max-w-[200px] md:max-w-[350px] mx-auto aspect-[5.0917]">
           <Image 

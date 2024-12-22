@@ -9,65 +9,66 @@ export type T_Size_Unit = "mm" | "cm" | "m";
 export type T_Min_Order_Unit = "pcs" | "cm" | "box" | "roll" | "m";
 
 export type T_Content = {
-  app: {
-    ui: {
-      home: {
-        Search: {
-          "placeholder": string,
-          "aria-label": string
-        },
-        Categories_Section: {
-          "header": string,
-          "no_categories": string
-        },
-        Special_Groups_Section: {
-          "header": string,
-          "groups": {
-            "liq": string,
-            "new": string,
-            "prm": string
-          }
-        },
-        Count_Section: {
-          "header": string
-        },
-        Sorting_Section: {
-          "header": string,
-          "sorting": {
-            "name_asc": string,
-            "name_desc": string,
-            "price_asc": string,
-            "price_desc": string
-          }
-        },
-        Pagination: {
-          "previous_text": string,
-          "next_text": string
-        },
-        Item_List: {
-          "no_items": string
-        },
-        Item_Card: {
-          "aria-label": string
-        }
-      },
-      Navbar: {
-        "title": {
-          "/contacts": string,
-          "/address": string,
-          "/cart": string,
-          "lang_switch": string
-        }
-      },
-      Hero: {
-        "title": string,
+  components: {
+    home: {
+      Search: {
+        "placeholder": string,
         "aria-label": string
       },
-      add_to_cart_btn: {
-        "add_to_cart": string,
-        "remove_from_cart": string,
-        "update_cart": string
+      Categories_Section: {
+        "header": string,
+        "no_categories": string
+      },
+      Special_Groups_Section: {
+        "header": string,
+        "groups": {
+          "liq": string,
+          "new": string,
+          "prm": string
+        }
+      },
+      Count_Section: {
+        "header": string
+      },
+      Sorting_Section: {
+        "header": string,
+        "sorting": {
+          "name_asc": string,
+          "name_desc": string,
+          "price_asc": string,
+          "price_desc": string
+        }
+      },
+      Pagination: {
+        "previous_text": string,
+        "next_text": string
+      },
+      Item_List: {
+        "no_items": string
+      },
+      Item_Card: {
+        "aria-label": string
+      },
+      Suggested_Items: {
+        "header": string
       }
+    },
+    Navbar: {
+      "title": {
+        "/contacts": string,
+        "/address": string,
+        "/cart": string,
+        "lang_switch": string
+      }
+    },
+    Hero: {
+      "title": string,
+      "aria-label": string
+    },
+    add_to_cart_btn: {
+      "add_to_cart": string,
+      "remove_from_cart": string,
+      "update_cart": string
     }
   },
   actions: {

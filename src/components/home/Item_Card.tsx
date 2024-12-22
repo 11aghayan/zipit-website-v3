@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
-import { T_Content, T_Item_Short, T_Lang } from "@/app/types";
+import { T_Content, T_Item_Short, T_Lang } from "@/types";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { get_int, size_unit_map } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { use_cart } from "@/hooks/use-cart"; 
 import { Badge } from "@/components/ui/badge";
-import Success_Checkmark from "@/app/ui/Success_Checkmark";
+import Success_Checkmark from "@/components/Success_Checkmark";
 
 type Props = {
   item: T_Item_Short,
@@ -47,7 +47,7 @@ export default function Item_Card({ item, lang }: Props) {
     <Card className="flex flex-col hover:bg-gray-100/50 h-[470px] justify-between">
       <Link 
         href={`/${lang}/item/${item.id}?variant=${item.photo_id}`}
-        aria-label={content?.app.ui.home.Item_Card["aria-label"].replace("{{item_name}}", item.name) ?? ""}
+        aria-label={content?.components.home.Item_Card["aria-label"].replace("{{item_name}}", item.name) ?? ""}
         className="rounded-t-xl transition-colors"
       >
         <CardHeader className="flex-row items-start justify-between space-y-0">
@@ -64,7 +64,7 @@ export default function Item_Card({ item, lang }: Props) {
                   "bg-group_new": item.special_group === "new",
                 }
               )}>
-                {content?.app.ui.home.Special_Groups_Section.groups[item.special_group]}
+                {content?.components.home.Special_Groups_Section.groups[item.special_group]}
             </Badge>
             :
             null
@@ -150,13 +150,13 @@ export default function Item_Card({ item, lang }: Props) {
                   ?
                   item_in_cart.qty > 0 && Number(qty) < 1
                   ?
-                  content.app.ui.add_to_cart_btn.remove_from_cart
+                  content.components.add_to_cart_btn.remove_from_cart
                   :
                   item_in_cart.qty > 0
                   ?
-                  content.app.ui.add_to_cart_btn.update_cart 
+                  content.components.add_to_cart_btn.update_cart 
                   :
-                  content.app.ui.add_to_cart_btn.add_to_cart 
+                  content.components.add_to_cart_btn.add_to_cart 
                   :
                   ""
                 }

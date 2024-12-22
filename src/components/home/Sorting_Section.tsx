@@ -5,7 +5,7 @@ import { Suspense, useEffect, useState } from "react";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { SidebarContent, SidebarGroup, SidebarGroupLabel } from "@/components/ui/sidebar";
-import { T_Content, T_Lang } from "@/app/types";
+import { T_Content, T_Lang } from "@/types";
 import use_content from "@/hooks/use-content";
 
 import { T_Section_Props } from "./Filters_Menu";
@@ -36,13 +36,13 @@ function Sorting_Section({ header_styles }: Props) {
   
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className={header_styles}>{content?.app.ui.home.Sorting_Section.header ?? ""}</SidebarGroupLabel>
+      <SidebarGroupLabel className={header_styles}>{content?.components.home.Sorting_Section.header ?? ""}</SidebarGroupLabel>
       <SidebarContent>
         <Select onValueChange={(val) => set_sorting(val as typeof sorting)}>
           <SelectTrigger>
             <SelectValue
               defaultValue={sorting} 
-              placeholder={content?.app.ui.home.Sorting_Section.sorting[sorting] ?? ""}
+              placeholder={content?.components.home.Sorting_Section.sorting[sorting] ?? ""}
             />
           </SelectTrigger>
           <SelectContent>
@@ -51,9 +51,9 @@ function Sorting_Section({ header_styles }: Props) {
                 <SelectItem 
                   key={val}
                   value={val}
-                  aria-label={content?.app.ui.home.Sorting_Section.sorting[val] ?? val}
+                  aria-label={content?.components.home.Sorting_Section.sorting[val] ?? val}
                 >
-                  {content?.app.ui.home.Sorting_Section.sorting[val] ?? ""}
+                  {content?.components.home.Sorting_Section.sorting[val] ?? ""}
                 </SelectItem>
               ))
             }

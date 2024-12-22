@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
-import { T_All_Items_Response, T_Content, T_Lang } from "@/app/types";
+import { T_All_Items_Response, T_Content, T_Lang } from "@/types";
 import { get_all_items } from "@/actions/item-actions";
 import { Response_Error, Response_Success } from "@/actions/lib";
 import use_content from "@/hooks/use-content";
@@ -90,7 +90,7 @@ export default function Item_List({ lang }: Props) {
           </div>
           :
           <p className="text-2xl mt-3 opacity-25 font-semibold text-center">
-            {content?.app.ui.home.Item_List.no_items ?? ""}
+            {content?.components.home.Item_List.no_items ?? ""}
           </p>
         }
       </div>

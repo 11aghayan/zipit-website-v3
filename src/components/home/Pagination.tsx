@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import clsx from "clsx";
 import { Suspense, useEffect, useState } from "react";
 
-import { T_Content, T_Lang } from "@/app/types";
+import { T_Content, T_Lang } from "@/types";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import use_content from "@/hooks/use-content";
 
@@ -32,13 +32,13 @@ function Items_Pagination({ page, pages, lang }: Props) {
   }
   
   return (
-    <Pagination className="pt-20">
+    <Pagination className="pt-20 pb-3">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious 
             className={clsx(page <= 1 ? "pointer-events-none opacity-50" : "")}
             href={page_link_url(page - 1, pages)} 
-            text={content?.app.ui.home.Pagination.previous_text ?? ""}
+            text={content?.components.home.Pagination.previous_text ?? ""}
           />
         </PaginationItem>
         {
@@ -79,7 +79,7 @@ function Items_Pagination({ page, pages, lang }: Props) {
           <PaginationNext 
             className={clsx(page >= pages ? "pointer-events-none opacity-50" : "")}
             href={page_link_url(page + 1, pages)} 
-            text={content?.app.ui.home.Pagination.next_text ?? ""}
+            text={content?.components.home.Pagination.next_text ?? ""}
           />
         </PaginationItem>
       </PaginationContent>

@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 
 import { Input } from "@/components/ui/input";
 import use_content from "@/hooks/use-content";
-import { T_Content, T_Lang } from "@/app/types";
+import { T_Content, T_Lang } from "@/types";
 
 type Props = {
   className?: string;
@@ -48,8 +48,8 @@ export default function Search({ className }: Props) {
         />
         <Input 
           type="text"
-          aria-label={content?.app.ui.home.Search["aria-label"]}
-          placeholder={content?.app.ui.home.Search.placeholder}
+          aria-label={content?.components.home.Search["aria-label"]}
+          placeholder={content?.components.home.Search.placeholder}
           defaultValue={search_params.get("search") ?? ""}
           className="bg-white pr-8 text-sm"
           onChange={(e) => {

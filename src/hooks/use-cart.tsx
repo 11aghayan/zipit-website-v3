@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { T_Cart, T_Cart_Props } from "@/app/types";
+import { T_Cart, T_Cart_Props } from "@/types";
 import { get_cookie_store } from "@/lib/utils";
 
 export function use_cart() {

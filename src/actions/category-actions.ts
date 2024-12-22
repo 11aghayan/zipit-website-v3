@@ -1,4 +1,4 @@
-import { T_All_Categories_Response, T_Lang } from "@/app/types";
+import { T_All_Categories_Response, T_Lang } from "@/types";
 
 import { fetch_api, Response_Error} from "./lib";
 import use_content from "@/hooks/use-content";

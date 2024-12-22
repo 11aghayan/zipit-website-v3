@@ -9,7 +9,7 @@ import { Response_Error, Response_Success } from "@/actions/lib";
 import { SidebarContent, SidebarGroup, SidebarGroupLabel } from "@/components/ui/sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
 import use_content from "@/hooks/use-content";
-import { T_All_Categories_Response, T_Content, T_Lang } from "@/app/types";
+import { T_All_Categories_Response, T_Content, T_Lang } from "@/types";
 import { Toggle } from "@/components/ui/toggle";
 
 import { T_Section_Props } from "./Filters_Menu";
@@ -33,7 +33,7 @@ function Categories_Section({ header_styles }: Props) {
     set_data(res);
   }
   
-  const header_text = content?.app.ui.home.Categories_Section.header ?? "";
+  const header_text = content?.components.home.Categories_Section.header ?? "";
   
   useEffect(() => {
     fetch_categories();
@@ -53,7 +53,7 @@ function Categories_Section({ header_styles }: Props) {
   if (!data) {
     return (
       <SidebarGroup>
-        <SidebarGroupLabel className={header_styles}>{content?.app.ui.home.Categories_Section.header ?? ""}</SidebarGroupLabel>
+        <SidebarGroupLabel className={header_styles}>{content?.components.home.Categories_Section.header ?? ""}</SidebarGroupLabel>
         <SidebarContent>
           {
             (new Array(39).fill(1)).map((val, i) => (
@@ -108,7 +108,7 @@ function Categories_Section({ header_styles }: Props) {
             </Toggle>
           ))
           : 
-          <p className="text-lg text-center text-gray-300">{content?.app.ui.home.Categories_Section.no_categories ?? ""}</p>
+          <p className="text-lg text-center text-gray-300">{content?.components.home.Categories_Section.no_categories ?? ""}</p>
         }
       </SidebarContent>
     </SidebarGroup>

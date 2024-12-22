@@ -1,6 +1,7 @@
-import Top_Bar from "@/app/ui/home/Top_Bar";
-import Item_List from "@/app/ui/home/Item_List";
-import { T_Lang } from "@/app/types";
+import Top_Bar from "@/components/home/Top_Bar";
+import Item_List from "@/components/home/Item_List";
+import { T_Lang } from "@/types";
+import Suggested_Items from "@/components/home/Suggested_Items";
 
 type Props = {
   params: Promise<{ lang: string }>;
@@ -13,7 +14,8 @@ export default async function Home({ params }: Props) {
   return (
       <div className="w-full">
         <Top_Bar />
-        <section className="p-3 h-full">
+        <section className="p-3 space-y-6 h-full">
+          <Suggested_Items lang={lang} />
           <Item_List lang={lang} />
         </section>
       </div>

@@ -5,7 +5,7 @@ import { Suspense, useEffect, useState } from "react";
 
 import { Toggle } from "@/components/ui/toggle";
 import { SidebarGroup, SidebarGroupContent, SidebarGroupLabel } from "@/components/ui/sidebar";
-import { T_Content, T_Lang } from "@/app/types";
+import { T_Content, T_Lang } from "@/types";
 import use_content from "@/hooks/use-content";
 
 import { T_Section_Props } from "./Filters_Menu";
@@ -35,7 +35,7 @@ function Special_Groups_Section({ header_styles }: Props) {
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className={header_styles}>{content?.app.ui.home.Special_Groups_Section.header}</SidebarGroupLabel>
+      <SidebarGroupLabel className={header_styles}>{content?.components.home.Special_Groups_Section.header}</SidebarGroupLabel>
       <SidebarGroupContent className="flex flex-col gap-2">
         {
           special_group_list.map((group) => (
@@ -57,9 +57,9 @@ function Special_Groups_Section({ header_styles }: Props) {
                   return [...prev, group];
                 })
               }}
-              aria-label={content?.app.ui.home.Special_Groups_Section.groups[group] ?? group}
+              aria-label={content?.components.home.Special_Groups_Section.groups[group] ?? group}
             >
-              {content?.app.ui.home.Special_Groups_Section.groups[group] ?? ""}
+              {content?.components.home.Special_Groups_Section.groups[group] ?? ""}
             </Toggle>
           ))
         }
