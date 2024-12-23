@@ -76,7 +76,7 @@ export default function Item_Card({ item, lang }: Props) {
             alt={item.name} 
             width={150} 
             height={150} 
-            className="m-auto rounded-md w-[150px] h-[150px]"
+            className="m-auto rounded-md w-[150px] h-[150px] bg-white"
             loading="lazy"
           />
           <div className="flex w-fit mx-auto pt-6 pb-3">

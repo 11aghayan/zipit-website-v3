@@ -53,6 +53,15 @@ export type T_Content = {
         "header": string
       }
     },
+    item: {
+      Item: {
+        variants: {
+          "header": string,
+          "color": string,
+          "size": string
+        }
+      }
+    },
     Navbar: {
       "title": {
         "/contacts": string,
@@ -111,6 +120,38 @@ export type T_All_Items_Response = {
   items_count: number,
   pages: number,
   items: T_Item_Short[]
+}
+
+export type T_Item_Common = {
+  id: T_ID;
+  category_id: T_ID;
+  category: string;
+  name: string;
+};
+
+export type T_Item_Variant = {
+  photo_id: T_ID;
+  price: number;
+  promo: number | null;
+  size_id: T_ID;
+  size_value: number;
+  size_unit: T_Size_Unit;
+  color_id: T_ID;
+  color: string;
+  min_order_value: number;
+  min_order_unit: T_Min_Order_Unit;
+  description: string;
+  special_group: T_Special_Group | null;
+  available: number;
+};
+
+export type T_Item_Full = T_Item_Common & {
+  variants: T_Item_Variant[];
+};
+
+export type T_Item_Response = {
+  variants: number,
+  item: T_Item_Full
 }
 
 export type T_Cart = { 

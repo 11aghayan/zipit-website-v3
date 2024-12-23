@@ -43,6 +43,15 @@
         "header": "Горячие предложения"
       }
     },
+    "item": {
+      "Item": {
+        "variants": {
+          "header": "Варианты",
+          "color": "Цвет",
+          "size": "Размер"
+        }
+      }
+    },
     "Navbar": {
       "title": {
         "/contacts": "Контакты",

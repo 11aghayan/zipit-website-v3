@@ -43,6 +43,15 @@
         "header": "Թեժ առաջարկներ"
       }
     },
+    "item": {
+      "Item": {
+        "variants": {
+          "header": "Տարբերակներ",
+          "color": "Գույն",
+          "size": "Չափս"
+        }
+      }
+    },
     "Navbar": {
       "title": {
         "/contacts": "Կոնտակտներ",
