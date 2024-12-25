@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { cookies } from 'next/headers'
 import { Noto_Sans_Armenian, Noto_Sans } from "next/font/google";
 
-import { T_Children, T_Lang } from "@/types";
+import { T_Children } from "@/types";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Cookie_Notification from "@/components/Cookie_Notification";

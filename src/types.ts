@@ -58,7 +58,11 @@ export type T_Content = {
         variants: {
           "header": string,
           "color": string,
-          "size": string
+          "size": string,
+          "min_order": string,
+          "description": string,
+          "available": string,
+          "price": string
         }
       }
     },
@@ -104,16 +108,18 @@ export type T_All_Categories_Response = {
 }
 
 export type T_Item_Short = {
-  id: T_ID;
-  name: string;
-  photo_id: T_ID;
-  price: number;
-  promo: number | null;
-  special_group: T_Special_Group | null;
-  size_value: number;
-  size_unit: T_Size_Unit;
-  color: string;
-  count: string;
+  id: T_ID,
+  name: string,
+  photo_id: T_ID,
+  price: number,
+  promo: number | null,
+  special_group: T_Special_Group | null,
+  size_value: number,
+  size_unit: T_Size_Unit,
+  color: string,
+  count: string,
+  min_order_value: number,
+  min_order_unit: T_Min_Order_Unit
 }
 
 export type T_All_Items_Response = {
@@ -123,31 +129,32 @@ export type T_All_Items_Response = {
 }
 
 export type T_Item_Common = {
-  id: T_ID;
-  category_id: T_ID;
-  category: string;
-  name: string;
-};
+  id: T_ID,
+  category_id: T_ID,
+  category: string,
+  name: string
+}
 
 export type T_Item_Variant = {
-  photo_id: T_ID;
-  price: number;
-  promo: number | null;
-  size_id: T_ID;
-  size_value: number;
-  size_unit: T_Size_Unit;
-  color_id: T_ID;
-  color: string;
-  min_order_value: number;
-  min_order_unit: T_Min_Order_Unit;
-  description: string;
-  special_group: T_Special_Group | null;
-  available: number;
-};
+  photo_id: T_ID,
+  price: number,
+  promo: number | null,
+  size_id: T_ID,
+  size_value: number,
+  size_unit: T_Size_Unit,
+  color_id: T_ID,
+  color: string,
+  min_order_value: number,
+  min_order_unit: T_Min_Order_Unit,
+  description: string,
+  special_group: T_Special_Group | null,
+  available: number,
+  photo_count: number
+}
 
 export type T_Item_Full = T_Item_Common & {
-  variants: T_Item_Variant[];
-};
+  variants: T_Item_Variant[]
+}
 
 export type T_Item_Response = {
   variants: number,

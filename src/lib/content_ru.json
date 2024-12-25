@@ -48,7 +48,11 @@
         "variants": {
           "header": "Варианты",
           "color": "Цвет",
-          "size": "Размер"
+          "size": "Размер",
+          "min_order": "Минимальный заказ",
+          "description": "Описание",
+          "available": "Наличие",
+          "price": "Цена"
         }
       }
     },

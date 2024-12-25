@@ -1,15 +1,19 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import clsx from "clsx";
 
 import { T_Content, T_Item_Response, T_Item_Variant, T_Lang } from "@/types";
 import { get_item } from "@/actions/item-actions";
 import { Response_Error, Response_Success } from "@/actions/lib";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { size_unit_map } from "@/lib/utils";
 import use_content from "@/hooks/use-content";
+import { Badge } from "@/components/ui/badge";
+import Add_To_Cart from "@/components/Add_To_Cart";
+import Photo_Section from "@/components/Photo_Section";
+
+import Variant_Selector from "./Variant_Selector";
+import Item_Info_Section from "./Item_Info_Section";
+import Photo_Modal from "../Photo_Modal";
 
 type Props = {
   id: string,
@@ -18,13 +22,12 @@ type Props = {
 }
 
 export default function Item({ id, lang, variant_id }: Props) {
-  const pathname = usePathname();
-  const search_params = new URLSearchParams(useSearchParams().toString());
-  const router = useRouter();
+  
   
   const [content, set_content] = useState<T_Content>();
   const [data, set_data] = useState<Response_Error | Response_Success<T_Item_Response>>();
   const [variant, set_variant] = useState<T_Item_Variant>();
+  const [is_photo_modal_open, set_is_photo_modal_open] = useState(false);
   
   useEffect(() => {
     fetch_item()
@@ -58,63 +61,61 @@ export default function Item({ id, lang, variant_id }: Props) {
   }
   
   const { item } = data.data;
-
+  
   return (
-    <div className="rounded-xl flex bg-gray-200 p-3 shadow border">
-      <div className="w-full max-w-sm space-y-2">
-        <div className="relative w-full aspect-square">
-          <Image 
-            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/photo/${variant.photo_id}?width=400&height=400`}
-            alt={item.name}
-            fill
-            className="rounded-md border bg-white"
-            loading="lazy"
+    <div className="p-3 space-y-3 ">
+      <Photo_Modal 
+        item={item}
+        variant={variant}
+        is_open={is_photo_modal_open}
+        set_is_open={set_is_photo_modal_open}
+      />
+      {
+        variant.special_group !== null
+        ?
+        <Badge className={clsx("text-sm px-6 py-3", {
+          "bg-group_prm": variant.special_group === "prm",
+          "bg-group_liq": variant.special_group === "liq",
+          "bg-group_new": variant.special_group === "new",
+        })}>
+          {content?.components.home.Special_Groups_Section.groups[variant.special_group]}
+        </Badge>
+        :
+        null
+      }
+      <div className="flex flex-col sm:flex-row gap-6">
+        <section className="w-full max-w-sm space-y-2">
+          <Photo_Section
+            item={item}
+            variant={variant}
+            open_modal={() => set_is_photo_modal_open(true)}
           />
-        </div>
-        <Select 
-          defaultValue={variant.photo_id}
-          onValueChange={val => {
-            set_variant(data.data.item.variants.find(v => v.photo_id === val));
-            search_params.set("variant", val);
-            router.push(`${pathname}?${search_params.toString()}`)
-          }}
-        >
-          <div>
-            <p className="font-semibold text-sm">{content?.components.item.Item.variants.header ?? ""}</p>
-            <SelectTrigger className="bg-white mt-[2px]" >
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {
-                data.data.item.variants.map((v) => (
-                  <SelectItem
-                    key={v.photo_id}
-                    value={v.photo_id}
-                  >
-                    <div className="flex gap-1 justify-between">
-                      <div className="flex gap-1 min-w-24">
-                        <p className="font-semibold">
-                          {content?.components.item.Item.variants.color}:
-                        </p>
-                        <p>
-                          {v.color}
-                        </p>
-                      </div>
-                      <div className="flex gap-1 min-w-24">
-                        <p className="font-semibold">
-                          {content?.components.item.Item.variants.size}:
-                        </p>
-                        <p>
-                          {v.size_value}{size_unit_map(lang, v.size_unit)}
-                        </p>
-                      </div>
-                    </div>
-                  </SelectItem>
-                ))
-              }
-            </SelectContent>
+        </section>
+        <section className="flex flex-col gap-2">
+          <Variant_Selector 
+            content={content}
+            item={item}
+            lang={lang}
+            variant={variant}
+            set_variant={set_variant}
+          />
+          <Item_Info_Section 
+            content={content}
+            item={item}
+            lang={lang}
+            variant={variant}
+          />
+          <div className="space-y-2">
+            <Add_To_Cart 
+              content={content}
+              item_id={id}
+              lang={lang}
+              min_order_unit={variant.min_order_unit}
+              min_order_value={variant.min_order_value}
+              photo_id={variant.photo_id}
+            />
           </div>
-        </Select>
+        </section>
       </div>
     </div>
   );
