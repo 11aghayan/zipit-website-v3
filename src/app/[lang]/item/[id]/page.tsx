@@ -16,7 +16,7 @@ export default async function Item_Page({ params, searchParams }: Props) {
   const variant = (await searchParams).variant;
   
   return (
-    <div className="p-3">
+    <div className="p-5">
       <Item 
         id={id}
         lang={lang}

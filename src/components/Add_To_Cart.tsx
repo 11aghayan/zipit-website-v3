@@ -64,7 +64,7 @@ export default function Add_To_Cart({ item_id, photo_id, content, min_order_unit
   }, [photo_id])
   
   return (
-    <>
+    <div className="w-full max-w-sm space-y-2">
       <div className="flex gap-2 w-full">
         <Button 
           className="w-1/3 shadow-none"
@@ -143,6 +143,6 @@ export default function Add_To_Cart({ item_id, photo_id, content, min_order_unit
           </>
         }
       </Button>
-    </>
+    </div>
   );
 }

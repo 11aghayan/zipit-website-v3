@@ -10,10 +10,11 @@ import use_content from "@/hooks/use-content";
 import { Badge } from "@/components/ui/badge";
 import Add_To_Cart from "@/components/Add_To_Cart";
 import Photo_Section from "@/components/Photo_Section";
+import Photo_Modal from "@/components/Photo_Modal";
 
 import Variant_Selector from "./Variant_Selector";
 import Item_Info_Section from "./Item_Info_Section";
-import Photo_Modal from "../Photo_Modal";
+import Description from "./Description";
 
 type Props = {
   id: string,
@@ -63,7 +64,7 @@ export default function Item({ id, lang, variant_id }: Props) {
   const { item } = data.data;
   
   return (
-    <div className="p-3 space-y-3 ">
+    <div className="space-y-3">
       <Photo_Modal 
         item={item}
         variant={variant}
@@ -84,37 +85,45 @@ export default function Item({ id, lang, variant_id }: Props) {
         null
       }
       <div className="flex flex-col sm:flex-row gap-6">
-        <section className="w-full max-w-sm space-y-2">
-          <Photo_Section
-            item={item}
-            variant={variant}
-            open_modal={() => set_is_photo_modal_open(true)}
-          />
-        </section>
-        <section className="flex flex-col gap-2">
-          <Variant_Selector 
-            content={content}
-            item={item}
-            lang={lang}
-            variant={variant}
-            set_variant={set_variant}
-          />
-          <Item_Info_Section 
-            content={content}
-            item={item}
-            lang={lang}
-            variant={variant}
-          />
-          <div className="space-y-2">
-            <Add_To_Cart 
-              content={content}
-              item_id={id}
-              lang={lang}
-              min_order_unit={variant.min_order_unit}
-              min_order_value={variant.min_order_value}
-              photo_id={variant.photo_id}
+        <div className="flex flex-1 flex-col md:flex-row gap-6">
+          <section className="w-full max-w-sm space-y-2">
+            <Photo_Section
+              item={item}
+              variant={variant}
+              open_modal={() => set_is_photo_modal_open(true)}
             />
-          </div>
+          </section>
+          <section className="flex flex-col gap-2">
+            <Variant_Selector 
+              content={content}
+              item={item}
+              lang={lang}
+              variant={variant}
+              set_variant={set_variant}
+            />
+            <Item_Info_Section 
+              content={content}
+              item={item}
+              lang={lang}
+              variant={variant}
+            />
+            <div className="flex justify-center">
+              <Add_To_Cart 
+                content={content}
+                item_id={id}
+                lang={lang}
+                min_order_unit={variant.min_order_unit}
+                min_order_value={variant.min_order_value}
+                photo_id={variant.photo_id}
+              />
+            </div>
+          </section>
+        </div>
+        <section className="xl:flex-1 border-t sm:border-t-0 sm:border-l pt-2 sm:mt-0 sm:pl-3">
+          <Description 
+            description={variant.description}
+            lang={lang}
+          />
         </section>
       </div>
     </div>
