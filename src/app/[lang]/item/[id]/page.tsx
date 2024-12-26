@@ -1,6 +1,5 @@
 import Item from "@/components/item/Item";
 import Similar_Items from "@/components/item/Similar_Items";
-import use_content from "@/hooks/use-content";
 import { T_Lang } from "@/types";
 
 type Props = {
@@ -22,7 +21,9 @@ export default async function Item_Page({ params, searchParams }: Props) {
         lang={lang}
         variant_id={variant}
       />
-      <Similar_Items />
+      <section className="mt-10">
+        <Similar_Items lang={lang} />
+      </section>
     </div>
   );
 }

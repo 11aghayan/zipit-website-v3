@@ -48,9 +48,6 @@ export type T_Content = {
       },
       Item_Card: {
         "aria-label": string
-      },
-      Suggested_Items: {
-        "header": string
       }
     },
     item: {
@@ -82,6 +79,10 @@ export type T_Content = {
       "add_to_cart": string,
       "remove_from_cart": string,
       "update_cart": string
+    },
+    Suggested_Items: {
+      "header_suggested": string,
+      "header_similar": string
     }
   },
   actions: {

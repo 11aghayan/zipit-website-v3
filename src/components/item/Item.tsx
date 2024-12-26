@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 import { T_Content, T_Item_Response, T_Item_Variant, T_Lang } from "@/types";
 import { get_item } from "@/actions/item-actions";
@@ -23,7 +24,9 @@ type Props = {
 }
 
 export default function Item({ id, lang, variant_id }: Props) {
-  
+  const router = useRouter();
+  const pathname = usePathname();
+  const search_params = new URLSearchParams(useSearchParams().toString());
   
   const [content, set_content] = useState<T_Content>();
   const [data, set_data] = useState<Response_Error | Response_Success<T_Item_Response>>();
@@ -42,6 +45,16 @@ export default function Item({ id, lang, variant_id }: Props) {
     use_content(lang)
       .then(c => set_content(c));
   }, []);
+  
+  useEffect(() => {
+    if (data && variant && !(data instanceof Response_Error)) {
+      search_params.set("category_id", data.data.item.category_id);
+      search_params.set("special_group", variant.special_group ?? "");
+      search_params.set("size_unit", variant.size_unit);
+      search_params.set("item_id", data.data.item.id);
+      router.push(`${pathname}?${search_params.toString()}`);
+    }
+  }, [variant?.photo_id]);
   
   async function fetch_item() {
     const response = await get_item({ id, lang });
@@ -122,7 +135,7 @@ export default function Item({ id, lang, variant_id }: Props) {
         <section className="xl:flex-1 border-t sm:border-t-0 sm:border-l pt-2 sm:mt-0 sm:pl-3">
           <Description 
             description={variant.description}
-            lang={lang}
+            content={content}
           />
         </section>
       </div>

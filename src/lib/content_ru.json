@@ -38,9 +38,6 @@
       },
       "Item_Card": {
         "aria-label": "Перейти на страницу продукта {{item_name}}"
-      },
-      "Suggested_Items": {
-        "header": "Горячие предложения"
       }
     },
     "item": {
@@ -72,6 +69,10 @@
       "add_to_cart": "Добавить в корзину",
       "remove_from_cart": "Удалить из корзины",
       "update_cart": "Обновить корзину"
+    },
+    "Suggested_Items": {
+      "header_suggested": "Горячие предложения",
+      "header_similar": "Похожие товары"
     }
   },
   "actions": {

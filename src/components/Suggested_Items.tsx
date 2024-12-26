@@ -7,19 +7,20 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { T_All_Items_Response, T_Content, T_Lang } from "@/types";
 import { Response_Error, Response_Success } from "@/actions/lib";
 import { Skeleton } from "@/components/ui/skeleton";
-import { get_suggested_items } from "@/actions/item-actions";
+import { get_similar_items, get_suggested_items } from "@/actions/item-actions";
 import use_content from "@/hooks/use-content";
 
-import Carousel_Card from "./Carousel_Card";
+import Carousel_Card from "./home/Carousel_Card";
 
 type Props = {
-  lang: T_Lang
+  lang: T_Lang,
+  type: "suggested" | "similar",
+  search_params?: URLSearchParams
 }
 
-export default function Suggested_Items({ lang }: Props) {
+export default function Suggested_Items({ lang, type, search_params }: Props) {
   const [data, set_data] = useState<Response_Error | Response_Success<T_All_Items_Response>>();
   const [content, set_content] = useState<T_Content>();
-  
   useEffect(() => {
     use_content(lang)
       .then(c => set_content(c));
@@ -27,11 +28,21 @@ export default function Suggested_Items({ lang }: Props) {
 
   useEffect(() => {
     fetch_items();
-  }, []);
+  }, [search_params]);
   
   async function fetch_items() {
-    const res = await get_suggested_items(lang);
-    set_data(res);
+    if (type === "suggested") {
+      const res = await get_suggested_items(lang);
+      set_data(res);
+    } else {
+      if (!search_params) return;
+      if (search_params.get("item_id") === undefined) return;
+      if (search_params.get("category_id") === undefined) return;
+      if (search_params.get("special_group") === undefined) return;
+      if (search_params.get("size_unit") === undefined) return;
+      const res = await get_similar_items({ lang, search_params });
+      set_data(res);
+    }
   }
   
   if (!data) {
@@ -62,16 +73,20 @@ export default function Suggested_Items({ lang }: Props) {
     ?
     <div>
       <p className="font-semibold mb-2">
-        {content?.components.home.Suggested_Items.header ?? ""}
+        {content?.components.Suggested_Items[`header_${type}`] ?? ""}
       </p>
       <Carousel 
-        className="mx-auto w-full bg-gray-100/60 p-2"
+        className="mx-auto rounded-xl w-full bg-gray-50 p-2"
         opts={{
-          loop: true
+          loop: true,
         }}
         plugins={[
           Autoplay({
-            delay: 4000
+            delay: 4000,
+            stopOnInteraction: false,
+            stopOnMouseEnter: false,
+            stopOnFocusIn: false,
+            stopOnLastSnap: false
           })
         ]}
       >

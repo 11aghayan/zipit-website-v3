@@ -48,3 +48,19 @@ export async function get_item({ id, lang }: T_Single_Item_Props) {
     return new Response_Error(500, { message: content.actions.something_went_wrong_error }, error);
   }
 }
+
+type T_Similar_Items_Props = {
+  lang: T_Lang,
+  search_params: URLSearchParams
+}
+
+export async function get_similar_items({ lang, search_params }: T_Similar_Items_Props) {
+  const content = await use_content(lang);
+  search_params.set("lang", lang);
+  try {
+    const response = await fetch_api<T_All_Items_Response>(`/items/public/similar?${search_params.toString()}`);
+    return response;
+  } catch (error) {
+    return new Response_Error(500, { message: content.actions.something_went_wrong_error }, error);
+  }
+}

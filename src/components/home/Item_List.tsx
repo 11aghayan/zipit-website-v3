@@ -72,7 +72,7 @@ export default function Item_List({ lang }: Props) {
   }
 
   return (
-    <div className="h-full flex flex-col justify-between">
+    <div className="space-y-6">
       <div>
         {
           data.data.items_count > 0

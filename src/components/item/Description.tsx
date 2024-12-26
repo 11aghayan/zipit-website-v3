@@ -1,15 +1,15 @@
-import { T_Lang } from "@/types";
+import { T_Content, T_Lang } from "@/types";
 
 type Props = {
   description: string,
-  lang: T_Lang
+  content: T_Content | undefined
 }
 
-export default function Description({ description, lang }: Props) {
+export default function Description({ description, content }: Props) {
   
   return (
     <div>
-      <p className="font-bold text-sm mb-3">Description</p>
+      <p className="font-bold text-sm mb-3">{content?.components.item.Item.variants.description}</p>
       {description}
     </div>
   );
