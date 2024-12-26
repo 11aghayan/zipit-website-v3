@@ -16,6 +16,7 @@ import Photo_Modal from "@/components/Photo_Modal";
 import Variant_Selector from "./Variant_Selector";
 import Item_Info_Section from "./Item_Info_Section";
 import Description from "./Description";
+import Loader from "./Loader";
 
 type Props = {
   id: string,
@@ -64,13 +65,13 @@ export default function Item({ id, lang, variant_id }: Props) {
   
   if (!data || !variant) {
     return (
-      <p>Loading...</p>
+      <Loader />
     );
   }
   
   if (data instanceof Response_Error) {
     return (
-      <p>{data.data.message}</p>
+      <p className="text-destructive text-2xl text-center font-bold">{data.data.message}</p>
     );
   }
   

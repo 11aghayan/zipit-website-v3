@@ -85,7 +85,6 @@ export default function Photo_Section({ variant, item, size = 400, arrows = fals
           ))
         }
       </div>
-      
     </>
   );
 }
