@@ -32,7 +32,7 @@ function Items_Pagination({ page, pages, lang }: Props) {
   }
   
   return (
-    <Pagination className="pt-20 pb-3">
+    <Pagination>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious 

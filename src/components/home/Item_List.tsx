@@ -7,10 +7,10 @@ import { T_All_Items_Response, T_Content, T_Lang } from "@/types";
 import { get_all_items } from "@/actions/item-actions";
 import { Response_Error, Response_Success } from "@/actions/lib";
 import use_content from "@/hooks/use-content";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import Item_Card from "./Item_Card";
 import Pagination from "./Pagination";
-import { Skeleton } from "@/components/ui/skeleton";
 
 type Props = {
   lang: T_Lang;
@@ -55,7 +55,7 @@ export default function Item_List({ lang }: Props) {
           new Array(Number(search_params.get("count") ?? "25")).fill(1).map((val, i) => (
             <Skeleton 
               key={val + i}
-              className="h-[470px]"
+              className="h-[510px]"
             />
           ))
         }
@@ -72,7 +72,7 @@ export default function Item_List({ lang }: Props) {
   }
 
   return (
-    <div className="h-full flex flex-col justify-between">
+    <div className="space-y-6">
       <div>
         {
           data.data.items_count > 0

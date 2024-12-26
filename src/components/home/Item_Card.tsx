@@ -1,19 +1,15 @@
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import { Icon } from "@iconify/react/dist/iconify.js";
 
 import { T_Content, T_Item_Short, T_Lang } from "@/types";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { get_int, size_unit_map } from "@/lib/utils";
+import { min_order_unit_map, size_unit_map } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import use_content from "@/hooks/use-content";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { use_cart } from "@/hooks/use-cart"; 
 import { Badge } from "@/components/ui/badge";
-import Success_Checkmark from "@/components/Success_Checkmark";
+import Add_To_Cart from "@/components/Add_To_Cart";
+import Image from "@/components/Image";
 
 type Props = {
   item: T_Item_Short,
@@ -21,30 +17,15 @@ type Props = {
 }
 
 export default function Item_Card({ item, lang }: Props) {
-  const { cart, update_cart } = use_cart();
   const [content, set_content] = useState<T_Content>();
-  const [item_in_cart, set_item_in_cart] = useState(cart[item.photo_id] ? { ...cart[item.photo_id], photo_id: item.photo_id } : { item_id: item.id, photo_id: item.photo_id, qty: 0 });
-  const [qty, set_qty] = useState<string>(cart[item.photo_id]?.qty.toString() ?? "1");
-  const [is_animation_playing, set_is_animation_playing] = useState(false);
   
   useEffect(() => {
     use_content(lang)
       .then(c => set_content(c));
   }, [lang]);
-    
-  
-  function handle_update_cart() {
-    const updated_item = { ...item_in_cart, qty: Number(qty) };
-    set_item_in_cart(updated_item);
-    update_cart(updated_item);
-    set_is_animation_playing(true);
-    setTimeout(() => {
-      set_is_animation_playing(false);
-    }, 1000);
-  }
 
   return (
-    <Card className="flex flex-col hover:bg-gray-100/50 h-[470px] justify-between">
+    <Card className="flex flex-col hover:bg-gray-100/50 h-[510px] justify-between">
       <Link 
         href={`/${lang}/item/${item.id}?variant=${item.photo_id}`}
         aria-label={content?.components.home.Item_Card["aria-label"].replace("{{item_name}}", item.name) ?? ""}
@@ -76,12 +57,16 @@ export default function Item_Card({ item, lang }: Props) {
             alt={item.name} 
             width={150} 
             height={150} 
-            className="m-auto rounded-md w-[150px] h-[150px]"
+            className="m-auto rounded-md w-[150px] h-[150px] bg-white"
             loading="lazy"
           />
-          <div className="flex w-fit mx-auto pt-6 pb-3">
+          <div className="flex w-fit mx-auto pt-6 pb-1">
             <p className="pr-2">{item.color}</p>
             <p className="pl-2 border-l border-gray-700">{item.size_value}{size_unit_map(lang, item.size_unit)}</p>
+          </div>
+          <div className="flex w-fit mx-auto pb-3 text-xs">
+            <p className="pr-1">{content?.components.item.Item.variants.min_order}:</p>
+            <p>{item.min_order_value} {min_order_unit_map(lang, item.min_order_unit, item.min_order_value)}</p>
           </div>
         </CardContent>
       </Link>
@@ -110,60 +95,14 @@ export default function Item_Card({ item, lang }: Props) {
           }
         </div>
         <div className="space-y-2 flex-1">
-          <div className="flex gap-2 w-full">
-            <Button 
-              className="w-1/3 hover:bg-gray-300"
-              variant="outline"
-              onClick={() => set_qty(prev => Number(prev) - 1 < 0 ? "0" : (Number(prev) - 1).toString() )}
-            >
-              -
-            </Button>
-            <Input 
-              type="text"
-              className="text-center w-full bg-white"
-              value={qty}
-              onChange={e => set_qty(get_int(e.target.value))}
-            />
-            <Button 
-              className="w-1/3 hover:bg-gray-300"
-              variant="outline"
-              onClick={() => set_qty(prev => (Number(prev) + 1).toString())}
-            >
-              +
-            </Button>
-          </div>
-          <Button 
-            variant="outline"
-            className="w-full p-1 [&_svg]:size-max hover:bg-gray-300"
-            onClick={handle_update_cart}
-          >
-            {
-              is_animation_playing
-              ?
-              <div>
-                <Success_Checkmark />
-              </div>
-              :
-              <>
-                {
-                  content
-                  ?
-                  item_in_cart.qty > 0 && Number(qty) < 1
-                  ?
-                  content.components.add_to_cart_btn.remove_from_cart
-                  :
-                  item_in_cart.qty > 0
-                  ?
-                  content.components.add_to_cart_btn.update_cart 
-                  :
-                  content.components.add_to_cart_btn.add_to_cart 
-                  :
-                  ""
-                }
-                <Icon icon="solar:cart-large-4-bold" fontSize={18}/>
-              </>
-            }
-          </Button>
+          <Add_To_Cart 
+            content={content}
+            item_id={item.id}
+            photo_id={item.photo_id}
+            min_order_unit={item.min_order_unit}
+            min_order_value={item.min_order_value}
+            lang={lang}
+          />
         </div>
       </CardFooter>
     </Card>

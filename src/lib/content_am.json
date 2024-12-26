@@ -38,9 +38,19 @@
       },
       "Item_Card": {
         "aria-label": "Գնալ {{item_name}} ապրանքի էջ"
-      },
-      "Suggested_Items": {
-        "header": "Թեժ առաջարկներ"
+      }
+    },
+    "item": {
+      "Item": {
+        "variants": {
+          "header": "Տարբերակներ",
+          "color": "Գույն",
+          "size": "Չափս",
+          "min_order": "Նվազագույն պատվեր",
+          "description": "Նկարագրություն",
+          "available": "Առկայություն",
+          "price": "Գին"
+        }
       }
     },
     "Navbar": {
@@ -59,6 +69,10 @@
       "add_to_cart": "Ավելացնել զամբյուղ",
       "remove_from_cart": "Հեռացնել զամբյուղից",
       "update_cart": "Թարմացնել զամբյուղը"
+    },
+    "Suggested_Items": {
+      "header_suggested": "Թեժ առաջարկներ",
+      "header_similar": "Նման ապրանքներ"
     }
   },
   "actions": {

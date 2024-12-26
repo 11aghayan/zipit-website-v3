@@ -19,7 +19,7 @@ const config: Config = {
   		colors: {
         group_new: "#3B82F6",
         group_prm: "#efbf38",
-        group_liq: "#EF4444",
+        group_liq: "#ff8e00",
   			saffron: '#efbf38',
   			oxford_blue: '#002347',
   			amazon: '#34685c',

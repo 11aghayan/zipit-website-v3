@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Cookies from "universal-cookie";
 
 import { T_Cart, T_Cart_Props } from "@/types";
-import { get_cookie_store } from "@/lib/utils";
 
 export function use_cart() {
-  const cookie_store = get_cookie_store();
-  const [cart, set_cart] = useState<T_Cart>(cookie_store.cart ? JSON.parse(cookie_store.cart) : {});
-
+  const cookies = new Cookies(null, { path: "/" });
+  const [cart, set_cart] = useState<T_Cart>(cookies.get("cart") ?? {});
+  
   function update_cart({ item_id, photo_id, qty }: T_Cart_Props) {
     const updated_cart = {
       ...cart,
@@ -21,9 +21,9 @@ export function use_cart() {
       delete updated_cart[photo_id];
     }
     set_cart(updated_cart);
-    document.cookie = `cart=${JSON.stringify(updated_cart)}`;
+    cookies.set("cart", updated_cart, { path: "/" });
   }
-
+  
   return { cart, update_cart };
 }
 
