@@ -1,4 +1,4 @@
-import { T_Content, T_Lang } from "@/types";
+import { T_Content } from "@/types";
 
 type Props = {
   description: string,

@@ -1,11 +1,11 @@
 import Link from "next/link";
 import clsx from "clsx";
-import Image from "next/image";
 
 import { T_Content, T_Item_Short, T_Lang } from "@/types";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { size_unit_map } from "@/lib/utils";
+import Image from "@/components/Image";
 
 type Props = {
   item: T_Item_Short,

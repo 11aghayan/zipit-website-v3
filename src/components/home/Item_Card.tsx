@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
@@ -10,6 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import use_content from "@/hooks/use-content";
 import { Badge } from "@/components/ui/badge";
 import Add_To_Cart from "@/components/Add_To_Cart";
+import Image from "@/components/Image";
 
 type Props = {
   item: T_Item_Short,

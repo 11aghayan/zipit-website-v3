@@ -10,7 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { get_similar_items, get_suggested_items } from "@/actions/item-actions";
 import use_content from "@/hooks/use-content";
 
-import Carousel_Card from "./home/Carousel_Card";
+import Carousel_Card from "@/components/Carousel_Card";
 
 type Props = {
   lang: T_Lang,

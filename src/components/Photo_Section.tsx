@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { useState } from "react";
 import clsx from "clsx";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 import { T_Item_Full, T_Item_Variant } from "@/types";
+import Image from "@/components/Image";
 
 type Props = {
   variant: T_Item_Variant,
