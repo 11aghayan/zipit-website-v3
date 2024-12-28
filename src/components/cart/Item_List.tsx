@@ -77,7 +77,7 @@ export default function Item_List({ lang, content }: Props) {
   }
   
   const total_price = data.data.items.reduce((prev, val) => {
-    return prev + ((val.promo ?? val.price) * cart[val.photo_id].qty);
+    return prev + ((val.promo ?? val.price) * (cart[val.photo_id]?.qty ?? 0));
   }, 0);
   
   return (

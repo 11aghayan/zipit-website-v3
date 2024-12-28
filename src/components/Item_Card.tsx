@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { T_Content, T_Item_Short, T_Lang } from "@/types";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { min_order_unit_map, size_unit_map } from "@/lib/utils";
+import { format_number, min_order_unit_map, size_unit_map } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import use_content from "@/hooks/use-content";
 import { Badge } from "@/components/ui/badge";
@@ -76,10 +76,10 @@ export default function Item_Card({ item, lang }: Props) {
           <p className={clsx({
             "line-through text-sm": item.special_group === "prm" || item.special_group === "liq"
           })}>
-            {item.price} {content?.common.currency ?? ""}
+            {format_number(item.price)} {content?.common.currency ?? ""}
           </p>
           {
-            item.special_group === "liq" || item.special_group === "prm"
+            (item.special_group === "liq" || item.special_group === "prm") && item.promo
             ?
             <p className={clsx(
               "text-lg font-semibold", 
@@ -88,7 +88,7 @@ export default function Item_Card({ item, lang }: Props) {
                 "text-group_liq": item.special_group === "liq"
               }
             )}>
-              {item.promo} {content?.common.currency ?? ""}
+              {format_number(item.promo)} {content?.common.currency ?? ""}
             </p>
             :
             null

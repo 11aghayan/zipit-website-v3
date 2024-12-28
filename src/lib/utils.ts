@@ -80,13 +80,13 @@ export function get_int(val: string) {
 
 
 export function format_number(num: string | number) {
-  const input_num = num.toString();
+  const [int, float] = num.toString().split(".");
   const output_num_reversed: string[] = [];
 
-  for (let i = input_num.length - 1, l = 1; i >= 0; i--, l++) {
-    output_num_reversed.push(input_num[i])
+  for (let i = int.length - 1, l = 1; i >= 0; i--, l++) {
+    output_num_reversed.push(int[i])
     if (l % 3 === 0 && i !== 0) output_num_reversed.push(",")
   }
   
-  return output_num_reversed.reverse().join("");
+  return output_num_reversed.reverse().join("") + `${float ? `.${float}` : ""}`;
 }
