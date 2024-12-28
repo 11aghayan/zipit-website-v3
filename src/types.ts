@@ -63,6 +63,27 @@ export type T_Content = {
         }
       }
     },
+    cart: {
+      "header": string,
+      "empty_cart": string,
+      "forward": string,
+      "announcement": string,
+      "total": string
+    },
+    checkout: {
+      "header": string,
+      "submit": string,
+      "email": string,
+      "phone": string,
+      "name": string,
+      "comment": string,
+      "info": string,
+      "address": string,
+      "required_error": string,
+      "too_long_error_50": string,
+      "too_long_error_300": string,
+      "success_msg": string
+    },
     Navbar: {
       "title": {
         "/contacts": string,

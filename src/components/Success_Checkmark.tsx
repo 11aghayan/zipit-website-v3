@@ -1,7 +1,13 @@
-export default function Success_Checkmark({ style }: { style?: React.CSSProperties }) {
+export default function Success_Checkmark({ style, className = "", size = 20 }: { style?: React.CSSProperties, className?: string, size?: number }) {
   return (
-    <div>
-      <div className="relative w-5 h-5">
+    <div className={className}>
+      <div 
+        className="relative"
+        style={{
+          width: size,
+          height: size
+        }}
+      >
         <div
           className="
             absolute

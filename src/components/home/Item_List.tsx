@@ -8,8 +8,8 @@ import { get_all_items } from "@/actions/item-actions";
 import { Response_Error, Response_Success } from "@/actions/lib";
 import use_content from "@/hooks/use-content";
 import { Skeleton } from "@/components/ui/skeleton";
+import Item_Card from "@/components/Item_Card";
 
-import Item_Card from "./Item_Card";
 import Pagination from "./Pagination";
 
 type Props = {

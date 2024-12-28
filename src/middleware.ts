@@ -22,7 +22,17 @@ export default function middleware(req: NextRequest) {
     return res;
   }
 
+  const is_cart_empty = Object.keys(JSON.parse(req.cookies.get("cart")?.value ?? "{}")).length < 1;
+  
+  if (pathname.endsWith("checkout") && is_cart_empty) {
+    url.pathname = pathname.slice(0, 3);
+    const res = NextResponse.redirect(url);
+    res.cookies.set("lang", pathname.slice(1, 3));
+    return res;
+  }
+  
   const res = NextResponse.next();
   res.cookies.set("lang", pathname.slice(1, 3));
+
   return res;
 }

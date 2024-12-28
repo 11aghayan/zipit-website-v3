@@ -6,13 +6,13 @@ export function is_status_success(status: number) {
 }
 
 export async function fetch_api<T>(url: string, ...otherParams: RequestInit[]): Promise<Response_Success<T> | Response_Error> {
+  otherParams = otherParams.map(p => ({...p, headers: p.headers ?? {'Accept': 'application/json', 'Content-Type': 'application/json' }}));
   const res = await fetch(BASE_URL + url, ...otherParams);
   const data = await res.json();
   
   if (!is_status_success(res.status)) {
     return new Response_Error(res.status, data, data.message);
   }
-
   return new Response_Success<T>(res.status, data);
 }
 

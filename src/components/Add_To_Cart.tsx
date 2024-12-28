@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 import { Button } from "@/components/ui/button";
-import { use_cart } from "@/hooks/use-cart";
+import { cart, update_cart } from "@/hooks/use-cart";
 import { T_Content, T_ID, T_Lang, T_Min_Order_Unit } from "@/types";
 import { get_int, min_order_unit_map } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
@@ -18,10 +18,8 @@ type Props = {
 }
 
 export default function Add_To_Cart({ item_id, photo_id, content, min_order_unit, min_order_value, lang }: Props) {
-  const { cart, update_cart } = use_cart();
   const qty_in_cart = cart[photo_id]?.qty ?? "0";
-  const [qty, set_qty] = useState<string>(qty_in_cart - min_order_value >= 0 ? qty_in_cart.toString() : (min_order_value - qty_in_cart).toString());
-  const [item_in_cart, set_item_in_cart] = useState(cart[photo_id] ? { ...cart[photo_id], photo_id: photo_id } : { item_id, photo_id: photo_id, qty: 0 });  
+  const [qty, set_qty] = useState<string>(qty_in_cart - min_order_value >= 0 ? qty_in_cart.toString() : (min_order_value - qty_in_cart).toString());  
   const [is_animation_playing, set_is_animation_playing] = useState(false);
   const [error, set_error] = useState("");
   
@@ -38,8 +36,7 @@ export default function Add_To_Cart({ item_id, photo_id, content, min_order_unit
       }
       return;
     }
-    const updated_item = { ...item_in_cart, qty: Number(qty) };
-    set_item_in_cart(updated_item);
+    const updated_item = { photo_id, item_id, qty: Number(qty) };
     update_cart(updated_item);
     set_is_animation_playing(true);
     setTimeout(() => {
@@ -58,7 +55,6 @@ export default function Add_To_Cart({ item_id, photo_id, content, min_order_unit
   }, [qty]);
   
   useEffect(() => {
-    set_item_in_cart(cart[photo_id] ? { ...cart[photo_id], photo_id: photo_id } : { item_id, photo_id: photo_id, qty: 0 });
     set_qty(qty_in_cart - min_order_value >= 0 ? qty_in_cart.toString() : (min_order_value - qty_in_cart).toString());
     set_error("");
   }, [photo_id])
