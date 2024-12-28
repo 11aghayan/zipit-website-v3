@@ -1,4 +1,4 @@
-import { T_All_Items_Response, T_Item_Response, T_Lang } from "@/types";
+import { T_All_Items_Response, T_Cart_Props, T_Item_Response, T_Lang } from "@/types";
 
 import { fetch_api, Response_Error } from "./lib";
 import use_content from "@/hooks/use-content";
@@ -59,6 +59,20 @@ export async function get_similar_items({ lang, search_params }: T_Similar_Items
   search_params.set("lang", lang);
   try {
     const response = await fetch_api<T_All_Items_Response>(`/items/public/similar?${search_params.toString()}`);
+    return response;
+  } catch (error) {
+    return new Response_Error(500, { message: content.actions.something_went_wrong_error }, error);
+  }
+}
+
+export async function get_cart_items({ lang, items }: { items: T_Cart_Props[] } & { lang: T_Lang }) {
+  const content = await use_content(lang);
+  const body = JSON.stringify({
+    items: items.map(i => ({ item_id: i.item_id, photo_id: i.photo_id }))
+  });
+  
+  try {
+    const response = await fetch_api<T_All_Items_Response>(`/items/public/cart?lang=${lang}`, { method: "POST", body });
     return response;
   } catch (error) {
     return new Response_Error(500, { message: content.actions.something_went_wrong_error }, error);

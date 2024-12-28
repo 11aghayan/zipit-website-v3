@@ -79,7 +79,16 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+      animation: {
+        "run_line": "translate_rtl 25s linear infinite"
+      },
+      keyframes: {
+        translate_rtl: {
+          '0%': { transform: 'translate(100%, -50%)' },
+          '100%': { transform: 'translate(-100%, -50%)' },
+        }
+      }
   	}
   },
   plugins: [require("tailwindcss-animate")],

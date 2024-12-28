@@ -28,7 +28,20 @@ export default function Navbar() {
   }, [lang]);
 
   return (
-    <NavigationMenu className="w-full max-w-full min-h-[44px] md:min-h-16 bg-black p-2 md:p-5">
+    <NavigationMenu className="w-full max-w-full justify-between min-h-[44px] md:min-h-16 bg-black p-2 md:p-5">
+        <div 
+        className="relative h-5 w-full flex-1 mr-32 overflow-hidden"
+        >
+          {
+            pathname_array[2] !== "cart"
+            ?
+            <p className="absolute text-nowrap top-1/2 w-dvw animate-run_line text-white">
+              {content?.components.cart.announcement}
+            </p>
+            :
+            null
+          }
+        </div>
       <NavigationMenuList className="space-x-5">
         {
           nav_routes.map(({ icon, href }) => (
@@ -36,7 +49,7 @@ export default function Navbar() {
               key={href}
             >
               <Link 
-                href={lang + href} 
+                href={'/' + lang + href} 
                 title={content?.components.Navbar.title[href as keyof T_Content["components"]["Navbar"]["title"] ]}
                 aria-label={content?.components.Navbar.title[href as keyof T_Content["components"]["Navbar"]["title"] ] ?? href}
                 className="relative"
