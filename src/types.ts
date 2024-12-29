@@ -93,6 +93,14 @@ export type T_Content = {
     contacts: {
       "header": string
     },
+    not_found: {
+      "main_text": string,
+      "btn_text": string
+    },
+    error: {
+      "main_text": string,
+      "btn_text": string
+    },
     Navbar: {
       "title": {
         "/contacts": string,
