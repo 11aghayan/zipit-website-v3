@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Contact_List() {
   const value = {
-    email: 'zipitaccessories@gmail.com',
+    email: 'info@zipit.am',
     phone: '+37495124838',
     whatsapp: '+37495124838',
     telegram: '@ZIPIT_ACCESSORIES',
