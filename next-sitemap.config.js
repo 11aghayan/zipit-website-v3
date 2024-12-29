@@ -2,5 +2,5 @@
 module.exports = {
   siteUrl: "https://zipit.am",
   generateRobotsTxt: true, // Automatically generates robots.txt
-  exclude: ["/api/*"],
+  exclude: ["/api/*", "*/cart/*", "*/checkout/*"],
 };

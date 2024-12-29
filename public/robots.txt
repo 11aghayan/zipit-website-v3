@@ -1,11 +1,6 @@
 # *
 User-agent: *
-
-Disallow: */cart
-Disallow: */checkout
-
-Allow: /am/*
-Allow: /ru/*
+Allow: /
 
 # Host
 Host: https://zipit.am
