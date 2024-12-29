@@ -90,6 +90,9 @@ export type T_Content = {
       "working_hours": string,
       "week_days": string
     },
+    contacts: {
+      "header": string
+    },
     Navbar: {
       "title": {
         "/contacts": string,

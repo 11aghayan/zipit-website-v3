@@ -80,6 +80,9 @@
       "working_hours": "Աշխ. ժամեր",
       "week_days": "Երկ-Կիր"
     },
+    "contacts": {
+      "header": "Կոնտակտներ"
+    },
     "Navbar": {
       "title": {
         "/contacts": "Կոնտակտներ",

@@ -80,6 +80,9 @@
       "working_hours": "Рабочие часы",
       "week_days": "Пн-Вс"
     },
+    "contacts": {
+      "header": "Контакты"
+    },
     "Navbar": {
       "title": {
         "/contacts": "Контакты",

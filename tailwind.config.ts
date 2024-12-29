@@ -17,6 +17,11 @@ const config: Config = {
     },
   	extend: {
   		colors: {
+        email: "#a1a1a1",
+        whatsapp: "#25D366",
+        telegram: "#24A1DE",
+        viber: "#7360f2",
+        phone: "#3c3c3c",
         group_new: "#3B82F6",
         group_prm: "#efbf38",
         group_liq: "#ff8e00",

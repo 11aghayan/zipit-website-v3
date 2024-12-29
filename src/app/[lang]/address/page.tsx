@@ -14,7 +14,7 @@ export default async function Address({ params }: Props) {
   
   return (
     <div className="p-3 space-y-6">
-      <p className="text-center text-2xl opacity-80 font-bold">{content.components.address.header}</p>
+      <p className="text-center font-bold text-2xl opacity-60">{content.components.address.header}</p>
       <div>
         <p className="text-center">{content.components.address.address} 97/1</p>
         <p className="text-center">{content.components.address.week_days} 10:00-18:00</p>
