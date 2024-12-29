@@ -28,7 +28,7 @@ function Items_Pagination({ page, pages, lang }: Props) {
   function page_link_url(page: number, pages: number) {
     page = page < 1 ? 1 : page > pages ? pages : page;
     search_params.set("page", page.toString());
-    return `/items?${search_params.toString()}`
+    return `/${lang}?${search_params.toString()}`
   }
   
   return (
