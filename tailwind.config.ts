@@ -85,8 +85,8 @@ const config: Config = {
       },
       keyframes: {
         translate_rtl: {
-          '0%': { transform: 'translate(100%, -50%)' },
-          '100%': { transform: 'translate(-100%, -50%)' },
+          '0%': { right: "-1050px" },
+          '100%': { right: "100%" },
         }
       }
   	}

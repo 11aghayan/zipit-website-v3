@@ -29,13 +29,11 @@ export default function Navbar() {
 
   return (
     <NavigationMenu className="w-full max-w-full justify-between min-h-[44px] md:min-h-16 bg-black p-2 md:p-5">
-        <div 
-        className="relative h-5 w-full flex-1 mr-32 overflow-hidden"
-        >
+        <div className="relative h-5 w-full flex-1 mr-4 md:mr-16 overflow-hidden">
           {
             pathname_array[2] !== "cart"
             ?
-            <p className="absolute text-nowrap top-1/2 w-dvw animate-run_line text-white">
+            <p className="absolute text-nowrap top-1/2 w-fit -right-full -translate-y-1/2 animate-run_line text-white">
               {content?.components.cart.announcement}
             </p>
             :

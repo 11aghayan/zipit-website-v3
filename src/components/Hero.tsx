@@ -19,7 +19,7 @@ export default function Hero() {
   }, [lang]);
   
   return (
-    <div className="w-full relative py-2">
+    <header className="w-full relative py-2">
       <Link 
         href={`/${lang}`}
         title={content?.components.Hero.title ?? ""}
@@ -34,6 +34,6 @@ export default function Hero() {
           />
         </div>
       </Link>
-    </div>
+    </header>
   );
 }
