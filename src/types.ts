@@ -84,6 +84,12 @@ export type T_Content = {
       "too_long_error_300": string,
       "success_msg": string
     },
+    address: {
+      "header": string,
+      "address": string,
+      "working_hours": string,
+      "week_days": string
+    },
     Navbar: {
       "title": {
         "/contacts": string,
