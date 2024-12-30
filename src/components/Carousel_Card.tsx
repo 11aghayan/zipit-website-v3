@@ -43,7 +43,7 @@ export default function Carousel_Card({ item, lang, content }: Props) {
         </CardHeader>
         <CardContent>
           <Image
-            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/photo/${item.photo_id}?width=250&height=250`} 
+            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/photo/${item.photo_id}?width=450&height=600`} 
             alt={item.name} 
             width={120} 
             height={160} 

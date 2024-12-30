@@ -32,7 +32,7 @@ export default function Photo_Modal({ item, variant, is_open, set_is_open }: Pro
         <Photo_Section 
           item={item}
           variant={variant}
-          size={1200}
+          size={2400}
           arrows
         />
       </div>

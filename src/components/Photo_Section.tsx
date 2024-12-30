@@ -13,7 +13,7 @@ type Props = {
   open_modal?: () => void
 }
 
-export default function Photo_Section({ variant, item, size = 400, arrows = false, open_modal }: Props) {
+export default function Photo_Section({ variant, item, size = 1200, arrows = false, open_modal }: Props) {
   const [active_photo_index, set_active_photo_index] = useState(1);
 
   function next_photo() {
@@ -31,7 +31,7 @@ export default function Photo_Section({ variant, item, size = 400, arrows = fals
         onClick={() => !!open_modal && open_modal()}
       >
         <Image 
-          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/photo/${variant.photo_id}?width=${size}&height=${size}&index=${active_photo_index}`}
+          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/photo/${variant.photo_id}?width=${size * 0.75}&height=${size}&index=${active_photo_index}`}
           alt={item.name}
           fill
           className="rounded-md border bg-white"
