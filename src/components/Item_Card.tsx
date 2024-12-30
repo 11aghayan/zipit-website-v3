@@ -56,8 +56,8 @@ export default function Item_Card({ item, lang }: Props) {
             src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/photo/${item.photo_id}?width=250&height=250`} 
             alt={item.name} 
             width={150} 
-            height={150} 
-            className="m-auto rounded-md w-[150px] h-[150px] bg-white"
+            height={200} 
+            className="m-auto rounded-md w-[150px] h-[200px] bg-white"
             loading="lazy"
           />
           <div className="flex w-fit mx-auto pt-6 pb-1">

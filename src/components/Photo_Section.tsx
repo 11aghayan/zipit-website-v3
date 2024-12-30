@@ -27,7 +27,7 @@ export default function Photo_Section({ variant, item, size = 400, arrows = fals
   return (
     <>
       <div 
-        className={clsx("group relative w-full aspect-square", { "cursor-pointer": !!open_modal })}
+        className={clsx("group relative w-full aspect-[0.75]", { "cursor-pointer": !!open_modal })}
         onClick={() => !!open_modal && open_modal()}
       >
         <Image 
