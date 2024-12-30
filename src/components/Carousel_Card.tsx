@@ -15,7 +15,7 @@ type Props = {
 
 export default function Carousel_Card({ item, lang, content }: Props) {
   return (
-    <Card className="h-[330px] shadow-none hover:bg-gray-50">
+    <Card className="h-[370px] shadow-none hover:bg-gray-50">
       <Link 
         href={`/${lang}/item/${item.id}?variant=${item.photo_id}`}
         aria-label={content?.components.home.Item_Card["aria-label"].replace("{{item_name}}", item.name) ?? ""}

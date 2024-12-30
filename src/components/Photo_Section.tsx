@@ -69,7 +69,7 @@ export default function Photo_Section({ variant, item, size = 400, arrows = fals
           new Array(variant.photo_count).fill(1).map((val, i) => (
             <div 
               key={val + i}
-              className={clsx("relative w-full max-w-20 aspect-square", {
+              className={clsx("relative w-full max-w-20 aspect-[0.75]", {
                 "before:absolute before:inset-0 before:bg-white/70 before:z-30 before:rounded-md": active_photo_index === i + 1
               })}
               onClick={() => set_active_photo_index(i + 1)}

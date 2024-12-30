@@ -25,7 +25,7 @@ export default function Item_Card({ item, lang }: Props) {
   }, [lang]);
 
   return (
-    <Card className="flex flex-col hover:bg-gray-100/50 h-[510px] justify-between">
+    <Card className="flex flex-col hover:bg-gray-100/50 h-[560px] justify-between">
       <Link 
         href={`/${lang}/item/${item.id}?variant=${item.photo_id}`}
         aria-label={content?.components.home.Item_Card["aria-label"].replace("{{item_name}}", item.name) ?? ""}

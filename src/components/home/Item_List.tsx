@@ -55,7 +55,7 @@ export default function Item_List({ lang }: Props) {
           new Array(Number(search_params.get("count") ?? "25")).fill(1).map((val, i) => (
             <Skeleton 
               key={val + i}
-              className="h-[510px]"
+              className="h-[560px]"
             />
           ))
         }

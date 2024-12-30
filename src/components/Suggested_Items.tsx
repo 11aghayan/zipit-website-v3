@@ -55,7 +55,7 @@ export default function Suggested_Items({ lang, type, search_params }: Props) {
                 className="sm:basis-1/2 lg:basis-1/3 2xl:basis-1/5"
                 key={val + i}
               >
-                <Skeleton className="h-[330px]" />
+                <Skeleton className="h-[370px]" />
               </CarouselItem>
             ))
           }
