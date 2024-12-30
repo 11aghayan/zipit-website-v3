@@ -82,7 +82,8 @@ export type T_Content = {
       "required_error": string,
       "too_long_error_50": string,
       "too_long_error_300": string,
-      "success_msg": string
+      "success_msg": string,
+      "not_confirmed_error": string
     },
     address: {
       "header": string,

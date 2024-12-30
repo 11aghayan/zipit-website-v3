@@ -66,7 +66,11 @@ export default function Checkout_Form({ content, lang }: Props) {
     const res = await send_order({ ...form_data, cart, lang });
 
     if (res instanceof Response_Error) {
-      set_response_error(res.data.message);
+      if (res.data.message === "Order error") {
+        set_response_error(content.components.checkout.not_confirmed_error)  ;
+      } else {
+        set_response_error(res.data.message);
+      }
       set_is_loading(false);
       return;
     }
