@@ -52,7 +52,15 @@ export default function Carousel_Card({ item, lang, content }: Props) {
           />
           <div className="flex w-fit mx-auto pt-6 pb-3">
             <p className="pr-2">{item.color}</p>
-            <p className="pl-2 border-l border-gray-700">{item.size_value}{size_unit_map(lang, item.size_unit)}</p>
+            <p className="pl-2 border-l border-gray-700">
+              {
+                item.size_unit === "num" 
+                ?
+                size_unit_map(lang, item.size_unit) + item.size_value
+                :
+                item.size_value + size_unit_map(lang, item.size_unit)
+              }
+            </p>
           </div>
         </CardContent>
         <CardFooter className="flex items-center justify-center gap-3">

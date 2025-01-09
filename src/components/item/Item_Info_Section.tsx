@@ -38,7 +38,15 @@ export default function Item_Info_Section({ item, lang, variant, content }: Prop
         </div>
         <div>
           <p className={`${title_classes}`}>{content?.components.item.Item.variants.size}</p>
-          <p className={`${value_classes}`}>{variant.size_value}{size_unit_map(lang, variant.size_unit)}</p>
+          <p className={`${value_classes}`}>
+            {
+              variant.size_unit === "num" 
+              ?
+              size_unit_map(lang, variant.size_unit) + variant.size_value
+              :
+              variant.size_value + size_unit_map(lang, variant.size_unit)
+            }
+          </p>
         </div>
         <div>
           <p className={`${title_classes}`}>{content?.components.item.Item.variants.color}</p>

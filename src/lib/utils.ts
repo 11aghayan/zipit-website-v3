@@ -16,12 +16,14 @@ export function size_unit_map(lang: T_Lang, unit: T_Size_Unit) {
     am: {
       mm: "մմ",
       cm: "սմ",
-      m: "մ"
+      m: "մ",
+      num: "#"
     } as const,
     ru: {
       mm: "мм",
       cm: "см",
-      m: "м"
+      m: "м",
+      num: "#"
     } as const
   } as const;
 

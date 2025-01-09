@@ -62,7 +62,15 @@ export default function Item_Card({ item, lang }: Props) {
           />
           <div className="flex w-fit mx-auto pt-6 pb-1">
             <p className="pr-2">{item.color}</p>
-            <p className="pl-2 border-l border-gray-700">{item.size_value}{size_unit_map(lang, item.size_unit)}</p>
+            <p className="pl-2 border-l border-gray-700">
+              {
+                item.size_unit === "num" 
+                ?
+                size_unit_map(lang, item.size_unit) + item.size_value
+                :
+                item.size_value + size_unit_map(lang, item.size_unit)
+              }
+            </p>
           </div>
           <div className="flex w-fit mx-auto pb-3 text-xs">
             <p className="pr-1">{content?.components.item.Item.variants.min_order}:</p>
