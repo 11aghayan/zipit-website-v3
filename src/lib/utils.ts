@@ -17,13 +17,13 @@ export function size_unit_map(lang: T_Lang, unit: T_Size_Unit) {
       mm: "մմ",
       cm: "սմ",
       m: "մ",
-      num: "#"
+      num: "№"
     } as const,
     ru: {
       mm: "мм",
       cm: "см",
       m: "м",
-      num: "#"
+      num: "№"
     } as const
   } as const;
 
