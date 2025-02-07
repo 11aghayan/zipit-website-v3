@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 import { Button } from "@/components/ui/button";
@@ -14,11 +14,12 @@ type Props = {
   content: T_Content | undefined,
   min_order_value: number,
   min_order_unit: T_Min_Order_Unit,
-  lang: T_Lang
+  lang: T_Lang,
+  set_card_shadow_color?: Dispatch<SetStateAction<"red" | "green" | "blue">>
 }
 
-export default function Add_To_Cart({ item_id, photo_id, content, min_order_unit, min_order_value, lang }: Props) {
-  const qty_in_cart = cart[photo_id]?.qty ?? "0";
+export default function Add_To_Cart({ item_id, photo_id, content, min_order_unit, min_order_value, lang, set_card_shadow_color }: Props) {
+  const qty_in_cart = cart[photo_id]?.qty ?? 0;
   const [qty, set_qty] = useState<string>(qty_in_cart - min_order_value >= 0 ? qty_in_cart.toString() : (min_order_value - qty_in_cart).toString());  
   const [is_animation_playing, set_is_animation_playing] = useState(false);
   const [error, set_error] = useState("");
@@ -38,10 +39,18 @@ export default function Add_To_Cart({ item_id, photo_id, content, min_order_unit
     }
     const updated_item = { photo_id, item_id, qty: Number(qty) };
     update_cart(updated_item);
+    update_card_shadow_color(qty, Number(qty));
     set_is_animation_playing(true);
     setTimeout(() => {
       set_is_animation_playing(false);
     }, 1000);
+  }
+  
+  function update_card_shadow_color(qty: string, qty_in_cart: number) {
+    if (set_card_shadow_color !== undefined) {
+      const color = qty === "0" && qty_in_cart > 0 ? "red" : qty_in_cart > 0 ? "green" : "blue";
+      set_card_shadow_color(color); 
+    }
   }
   
   useEffect(() => {
@@ -52,6 +61,7 @@ export default function Add_To_Cart({ item_id, photo_id, content, min_order_unit
     } else if (qty !== "" && min_order_value >= Number(qty)) {
       set_error("");
     }
+    update_card_shadow_color(qty, qty_in_cart);
   }, [qty]);
   
   useEffect(() => {
@@ -108,7 +118,7 @@ export default function Add_To_Cart({ item_id, photo_id, content, min_order_unit
         null
       }
       <Button 
-        variant={content && Number(qty_in_cart) > 0 && Number(qty) < 1 ? "destructive" : "outline"}
+        variant={content && qty_in_cart > 0 && Number(qty) < 1 ? "destructive" : qty_in_cart > 0 ? "green" : "blue"}
         className="w-full p-1 [&_svg]:size-max"
         onClick={handle_update_cart}
       >
@@ -123,11 +133,11 @@ export default function Add_To_Cart({ item_id, photo_id, content, min_order_unit
             {
               content
               ?
-              Number(qty_in_cart) > 0 && Number(qty) < 1
+              qty_in_cart > 0 && Number(qty) < 1
               ?
               content.components.add_to_cart_btn.remove_from_cart
               :
-              Number(qty_in_cart) > 0
+              qty_in_cart > 0
               ?
               content.components.add_to_cart_btn.update_cart 
               :

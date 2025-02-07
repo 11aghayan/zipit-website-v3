@@ -14,7 +14,7 @@ export default function Success_Checkmark({ style, className = "", size = 20 }: 
             inset-0
             rounded-full
             border-4
-            border-green-500
+            border-white
             animate-ping
           "
           style={style}
@@ -25,11 +25,11 @@ export default function Success_Checkmark({ style, className = "", size = 20 }: 
             inset-0
             rounded-full
             border-2
-            border-green-500
+            border-white
           "
         />
         <svg
-          className="absolute inset-0 w-full h-full text-green-500"
+          className="absolute inset-0 w-full h-full text-white"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="none"

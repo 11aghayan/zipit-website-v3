@@ -10,6 +10,7 @@ import use_content from "@/hooks/use-content";
 import { Badge } from "@/components/ui/badge";
 import Add_To_Cart from "@/components/Add_To_Cart";
 import Image from "@/components/Image";
+import { cart } from "@/hooks/use-cart";
 
 type Props = {
   item: T_Item_Short,
@@ -18,6 +19,7 @@ type Props = {
 
 export default function Item_Card({ item, lang }: Props) {
   const [content, set_content] = useState<T_Content>();
+  const [shadow_color, set_shadow_color] = useState<"blue" | "green" | "red">(Number(cart[item.photo_id]?.qty) > 0 ? "green" : "blue");
   
   useEffect(() => {
     use_content(lang)
@@ -25,7 +27,11 @@ export default function Item_Card({ item, lang }: Props) {
   }, [lang]);
 
   return (
-    <Card className="flex flex-col hover:bg-gray-100/50 h-[560px] justify-between">
+    <Card className={clsx("flex shadow-[1px_1px_8px_1px] outline-1 flex-col  hover:bg-gray-100/50 h-[560px] justify-between", {
+      "shadow-sky-700/40": shadow_color === "blue",
+      "shadow-amazon/40": shadow_color === "green",
+      "shadow-destructive/40": shadow_color === "red",
+    })}>
       <Link 
         href={`/${lang}/item/${item.id}?variant=${item.photo_id}`}
         aria-label={content?.components.home.Item_Card["aria-label"].replace("{{item_name}}", item.name) ?? ""}
@@ -110,6 +116,7 @@ export default function Item_Card({ item, lang }: Props) {
             min_order_unit={item.min_order_unit}
             min_order_value={item.min_order_value}
             lang={lang}
+            set_card_shadow_color={set_shadow_color}
           />
         </div>
       </CardFooter>
