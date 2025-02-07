@@ -27,7 +27,7 @@ export default function Item_Card({ item, lang }: Props) {
   }, [lang]);
 
   return (
-    <Card className={clsx("flex shadow-[1px_1px_8px_1px] outline-1 flex-col  hover:bg-gray-100/50 h-[560px] justify-between", {
+    <Card className={clsx("flex shadow-[1px_1px_4px_1px] outline-1 flex-col  hover:bg-gray-100/50 h-[560px] justify-between", {
       "shadow-sky-700/40": shadow_color === "blue",
       "shadow-amazon/40": shadow_color === "green",
       "shadow-destructive/40": shadow_color === "red",
