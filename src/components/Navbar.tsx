@@ -67,12 +67,12 @@ export default function Navbar() {
                 href={'/' + lang + href} 
                 title={content?.components.Navbar.title[href as keyof T_Content["components"]["Navbar"]["title"] ]}
                 aria-label={content?.components.Navbar.title[href as keyof T_Content["components"]["Navbar"]["title"] ] ?? href}
-                className="relative"
-              >
-                <Icon icon={icon} className={clsx(
-                  "hover:text-saffron text-lg md:text-2xl",
+                className={clsx(
+                  "relative hover:text-saffron text-lg md:text-2xl",
                     href === `/${pathname_array[2]}` ? "text-saffron" : "text-white "
-                  )} 
+                  )}
+              >
+                <Icon icon={icon}  
                 />
                 {
                   href === "/cart"
