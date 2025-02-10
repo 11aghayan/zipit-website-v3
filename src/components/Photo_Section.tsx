@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 
 import { T_Item_Full, T_Item_Variant } from "@/types";
 import Image from "@/components/Image";
+import { use_screen } from "@/hooks/use-screen";
 
 type Props = {
   variant: T_Item_Variant,
@@ -15,6 +16,7 @@ type Props = {
 
 export default function Photo_Section({ variant, item, size = 1200, arrows = false, open_modal }: Props) {
   const [active_photo_index, set_active_photo_index] = useState(1);
+  const screen = use_screen();
 
   function next_photo() {
     set_active_photo_index(prev => prev + 1 > variant.photo_count ? 1 : prev + 1);
@@ -24,10 +26,12 @@ export default function Photo_Section({ variant, item, size = 1200, arrows = fal
     set_active_photo_index(prev => prev - 1 < 1 ? variant.photo_count : prev - 1);
   }
 
+  if (!screen) return null;
+  
   return (
     <>
       <div 
-        className={clsx("group relative w-full aspect-[0.75]", { "cursor-pointer": !!open_modal })}
+        className={clsx("group relative aspect-[0.75]", screen.aspect > 0.7 && arrows ? "h-[80dvh]" : "w-full" , { "cursor-pointer": !!open_modal })}
         onClick={() => !!open_modal && open_modal()}
       >
         <Image 

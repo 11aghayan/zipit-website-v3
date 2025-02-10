@@ -9,6 +9,6 @@ export const nav_routes = [
   },
   {
     href: "/cart",
-    icon: "solar:cart-large-4-bold"
+    icon: "mynaui:cart-solid"
   }
 ];

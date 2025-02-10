@@ -16,7 +16,7 @@ type Props = {
 
 export default function Carousel_Card({ item, lang, content, type }: Props) {
   return (
-    <Card className={clsx("h-[370px] shadow-none", type === "suggested" ? "bg-oxford_blue/90 hover:bg-oxford_blue/85 text-gray-100" : "bg-white hover:bg-gray-50 text-foreground")}>
+    <Card className={clsx("h-[370px] shadow-none", type === "suggested" ? "bg-oxford_blue/70 hover:bg-oxford_blue/60 text-gray-100" : "border-oxford_blue bg-white hover:bg-gray-50 text-foreground")}>
       <Link 
         href={`/${lang}/item/${item.id}?variant=${item.photo_id}`}
         aria-label={content?.components.home.Item_Card["aria-label"].replace("{{item_name}}", item.name) ?? ""}
