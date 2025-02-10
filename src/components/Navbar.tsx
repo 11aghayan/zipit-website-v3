@@ -77,7 +77,7 @@ export default function Navbar() {
                 {
                   href === "/cart"
                   ?
-                  <div className={clsx("text-white absolute text-[10px] leading-4 text-center w-4 h-4 -top-1 -right-2 rounded-full", cart_size > 0 ? "bg-amazon" : "bg-group_new")}>
+                  <div className={clsx("text-white absolute text-[10px] leading-4 text-center w-4 h-4 -top-1 left-[14px] rounded-full", cart_size > 0 ? "bg-amazon" : "bg-group_new")}>
                     {cart_size}
                   </div> 
                   :
