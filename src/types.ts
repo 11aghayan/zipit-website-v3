@@ -213,3 +213,7 @@ export type T_Cart_Props = {
   photo_id: string, 
   qty: number 
 }
+
+export type T_Server_Search_Params = {
+  [key: string]: string | string[][] | Record<string, string> | URLSearchParams | undefined
+}

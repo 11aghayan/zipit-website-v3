@@ -27,10 +27,10 @@ export default function Item_Card({ item, lang }: Props) {
   }, [lang]);
 
   return (
-    <Card className={clsx("flex shadow-[1px_1px_4px_1px] outline-1 flex-col  hover:bg-gray-100/50 h-[560px] justify-between", {
-      "shadow-sky-700/40": shadow_color === "blue",
-      "shadow-amazon/40": shadow_color === "green",
-      "shadow-destructive/40": shadow_color === "red",
+    <Card className={clsx("flex border shadow-none [1px_1px_2px_1px] outline-1 flex-col  hover:bg-gray-100/50 h-[560px] justify-between", {
+      "border-sky-700/40": shadow_color === "blue",
+      "border-amazon/40": shadow_color === "green",
+      "border-destructive/40": shadow_color === "red",
     })}>
       <Link 
         href={`/${lang}/item/${item.id}?variant=${item.photo_id}`}

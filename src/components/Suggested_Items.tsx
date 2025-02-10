@@ -11,14 +11,16 @@ import { get_similar_items, get_suggested_items } from "@/actions/item-actions";
 import use_content from "@/hooks/use-content";
 
 import Carousel_Card from "@/components/Carousel_Card";
+import { useSearchParams } from "next/navigation";
+import clsx from "clsx";
 
 type Props = {
   lang: T_Lang,
-  type: "suggested" | "similar",
-  search_params?: URLSearchParams
+  type: "suggested" | "similar"
 }
 
-export default function Suggested_Items({ lang, type, search_params }: Props) {
+export default function Suggested_Items({ lang, type }: Props) {
+  const search_params = new URLSearchParams(useSearchParams().toString());
   const [data, set_data] = useState<Response_Error | Response_Success<T_All_Items_Response>>();
   const [content, set_content] = useState<T_Content>();
   useEffect(() => {
@@ -28,7 +30,7 @@ export default function Suggested_Items({ lang, type, search_params }: Props) {
 
   useEffect(() => {
     fetch_items();
-  }, [search_params]);
+  }, [search_params.toString()]);
   
   async function fetch_items() {
     if (type === "suggested") {
@@ -43,6 +45,10 @@ export default function Suggested_Items({ lang, type, search_params }: Props) {
       const res = await get_similar_items({ lang, search_params });
       set_data(res);
     }
+  }
+  
+  if (type === "suggested" && search_params.size > 0) {
+    return null;
   }
   
   if (!data) {
@@ -71,12 +77,12 @@ export default function Suggested_Items({ lang, type, search_params }: Props) {
   return (
     data.data.items_count > 0
     ?
-    <div>
-      <p className="font-semibold mb-2">
+    <div className={clsx("border rounded-xl p-2", type === "suggested" ? "border-oxford_blue/30" : "border-foreground/20")}>
+      <p className={clsx("font-semibold mb-2", type === "suggested" ? "text-oxford_blue" : "text-foreground")}>
         {content?.components.Suggested_Items[`header_${type}`] ?? ""}
       </p>
       <Carousel 
-        className="mx-auto rounded-xl w-full bg-gray-50 p-2"
+        className="mx-auto w-full bg-transparent p-2"
         opts={{
           loop: true,
         }}
@@ -101,23 +107,24 @@ export default function Suggested_Items({ lang, type, search_params }: Props) {
                   item={item} 
                   lang={lang} 
                   content={content}
+                  type={type}
                 />
               </CarouselItem>
             ))
           }
         </CarouselContent>
         <div 
-          className="hidden sm:block absolute top-0 bottom-0 left-0 bg-white w-20"
+          className="hidden sm:block absolute top-0 bottom-0 left-0 w-24"
           style={{
-            background: "linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0))"
+            background: "linear-gradient(to right, rgba(255,255,255,0.7), rgba(255,255,255,0))"
           }}
         >
           <CarouselPrevious className="w-10 h-10 left-2 top-1/2 -translate-y-1/2" />
         </div>
         <div 
-          className="hidden sm:block absolute top-0 bottom-0 right-0 bg-white w-20"
+          className="hidden sm:block absolute top-0 bottom-0 right-0 w-24"
           style={{
-            background: "linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1))"
+            background: "linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.7))"
           }}
         >
           <CarouselNext className="w-10 h-10 right-2 top-1/2 -translate-y-1/2" />

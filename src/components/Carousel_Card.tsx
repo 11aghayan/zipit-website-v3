@@ -10,12 +10,13 @@ import Image from "@/components/Image";
 type Props = {
   item: T_Item_Short,
   lang: T_Lang,
-  content: T_Content | undefined
+  content: T_Content | undefined,
+  type: "suggested" | "similar"
 }
 
-export default function Carousel_Card({ item, lang, content }: Props) {
+export default function Carousel_Card({ item, lang, content, type }: Props) {
   return (
-    <Card className="h-[370px] shadow-none hover:bg-gray-50">
+    <Card className={clsx("h-[370px] shadow-none", type === "suggested" ? "bg-oxford_blue/90 hover:bg-oxford_blue/85 text-gray-100" : "bg-white hover:bg-gray-50 text-foreground")}>
       <Link 
         href={`/${lang}/item/${item.id}?variant=${item.photo_id}`}
         aria-label={content?.components.home.Item_Card["aria-label"].replace("{{item_name}}", item.name) ?? ""}
@@ -52,7 +53,7 @@ export default function Carousel_Card({ item, lang, content }: Props) {
           />
           <div className="flex w-fit mx-auto pt-6 pb-3">
             <p className="pr-2">{item.color}</p>
-            <p className="pl-2 border-l border-gray-700">
+            <p className={clsx("pl-2 border-l", type === "suggested" ? "border-gray-200" : "border-gray-400")}>
               {
                 item.size_unit === "num" 
                 ?

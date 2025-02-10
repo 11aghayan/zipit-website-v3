@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import Cookies, { CookieChangeOptions } from "universal-cookie";
 
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { nav_routes } from "@/lib/nav-routes";
@@ -13,7 +14,10 @@ import use_content from "@/hooks/use-content";
 
 
 export default function Navbar() {
+  const cookies = new Cookies(null, { path: "/" });
+
   const [content, set_content] = useState<T_Content>();
+  const [cart_size, set_cart_size] = useState(0);
   
   const search_params = useSearchParams().toString();
   const pathname_array = usePathname().split("/");
@@ -23,9 +27,22 @@ export default function Navbar() {
   const pathname = pathname_array.join("/");
   
   useEffect(() => {
+    function cookie_change_listener(c: CookieChangeOptions) {
+      if (c.name === "cart") {
+        set_cart_size(Object.keys(c.value).length);
+      }
+    }
+    
+    cookies.addChangeListener(cookie_change_listener);
+
+    return () => cookies.removeChangeListener(cookie_change_listener)
+  }, []);
+
+  useEffect(() => {
       use_content(lang)
         .then(c => set_content(c));
   }, [lang]);
+
 
   return (
     <NavigationMenu className="w-full max-w-full justify-between min-h-[44px] md:min-h-16 bg-black p-2 md:p-5">
@@ -55,7 +72,17 @@ export default function Navbar() {
                 <Icon icon={icon} className={clsx(
                   "hover:text-saffron text-lg md:text-2xl",
                     href === `/${pathname_array[2]}` ? "text-saffron" : "text-white "
-                  )} />
+                  )} 
+                />
+                {
+                  href === "/cart"
+                  ?
+                  <div className={clsx("text-white absolute text-[10px] leading-4 text-center w-4 h-4 -top-1 -right-2 rounded-full", cart_size > 0 ? "bg-amazon" : "bg-group_new")}>
+                    {cart_size}
+                  </div> 
+                  :
+                  null
+                }
               </Link>
             </NavigationMenuItem>
           ))
