@@ -78,7 +78,7 @@ export default function Suggested_Items({ lang, type }: Props) {
     data.data.items_count > 0
     ?
     <div className={clsx("border rounded-xl p-2", type === "suggested" ? "border-oxford_blue/30" : "border-transparent")}>
-      <p className={clsx("font-semibold mb-2", type === "suggested" ? "text-oxford_blue" : "text-oxford_blue")}>
+      <p className={clsx("font-semibold mb-2", type === "suggested" ? "text-oxford_blue" : "text-oxford_blue/70")}>
         {content?.components.Suggested_Items[`header_${type}`] ?? ""}
       </p>
       <Carousel 
