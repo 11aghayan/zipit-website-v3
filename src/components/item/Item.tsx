@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useSearchParams, usePathname, useRouter, redirect } from "next/navigation";
 
 import { T_Content, T_Item_Response, T_Item_Variant, T_Lang } from "@/types";
 import { get_item } from "@/actions/item-actions";
@@ -40,6 +40,8 @@ export default function Item({ id, lang, variant_id }: Props) {
         if (!(res instanceof Response_Error)) {
           const variant = res.data.item.variants.find(v => v.photo_id === variant_id) ?? res.data.item.variants[0]
           set_variant(variant);
+        } else {
+          router.replace(`/${lang}/not-found`);
         }
       });
 
