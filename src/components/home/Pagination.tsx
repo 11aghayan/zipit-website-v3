@@ -3,11 +3,10 @@
 import { useSearchParams } from "next/navigation";
 
 import clsx from "clsx";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 
-import { T_Content, T_Lang } from "@/types";
+import { T_Lang } from "@/types";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
-import use_content from "@/hooks/use-content";
 
 type Props = {
   page: number,
@@ -17,13 +16,6 @@ type Props = {
 
 function Items_Pagination({ page, pages, lang }: Props) {
   const search_params = new URLSearchParams(useSearchParams().toString());
-  
-  const [content, set_content] = useState<T_Content>();
-  
-  useEffect(() => {
-    use_content(lang)
-      .then(c => set_content(c));
-  }, [lang]);
   
   function page_link_url(page: number, pages: number) {
     page = page < 1 ? 1 : page > pages ? pages : page;
@@ -38,7 +30,7 @@ function Items_Pagination({ page, pages, lang }: Props) {
           <PaginationPrevious 
             className={clsx(page <= 1 ? "pointer-events-none opacity-50" : "")}
             href={page_link_url(page - 1, pages)} 
-            text={content?.components.home.Pagination.previous_text ?? ""}
+            text={""}
           />
         </PaginationItem>
         {
@@ -79,7 +71,7 @@ function Items_Pagination({ page, pages, lang }: Props) {
           <PaginationNext 
             className={clsx(page >= pages ? "pointer-events-none opacity-50" : "")}
             href={page_link_url(page + 1, pages)} 
-            text={content?.components.home.Pagination.next_text ?? ""}
+            text={""}
           />
         </PaginationItem>
       </PaginationContent>
